@@ -1,11 +1,17 @@
 {
-  "name": "mini-app-react",
-  "version": "1.1.1",
-  "description": "Primeros pasos para aprender React...",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "MIT"
+    "name": "mini-app-react",
+    "version": "1.1.1",
+    "description": "Primeros pasos para aprender React...",
+    "main": "index.js",
+    "scripts": {
+        "start": "esbuild index.jsx --bundle --servedir=public/ --outdir=public/js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "esbuild": "^0.19.3",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    }
 }
