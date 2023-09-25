@@ -18,7 +18,7 @@ Para tener el gestor de paquetes **npm** (viene incluido en la instalación de N
 
   Las instalaciones con `npm install` pueden ser globales, o solo para el proyecto donde estemos lanzando el comando (queda registrado en su package.json)
 
-Para tener el framework ligero **Express** (viene incluido en la instalación de Node.js). Útil, por ejemplo, para desarrollar pequeños backends para servir una API o para servir una aplicación con rendering en servidor.
+nota: Para facilitar la creación rápida de aplicaciones web, podemos utilizar framework ligero **Express**. Útil, por ejemplo, para servir una pequeña API o para servir una pequeña SPA (Single Page Application).
 
 <https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs>
 
