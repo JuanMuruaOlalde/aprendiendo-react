@@ -4,7 +4,7 @@
     "description": "Primeros pasos para aprender React...",
     "main": "index.js",
     "scripts": {
-        "start": "esbuild index.jsx --bundle --servedir=public/ --outdir=public/js",
+        "start": "esbuild src/index.jsx --bundle --servedir=public/ --outdir=public/js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",
