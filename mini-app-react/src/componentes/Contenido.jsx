@@ -112,10 +112,12 @@ export function Contenido({tematicaDelContenido}) {
             </div>
         )
     }
-    return (
-        <div id="contenido">
-            <ContenidoPrincipalPorDefecto/>
-            <ContenidoSecundarioPorDefecto/>
-        </div>
-    )
+    if (tematicaDelContenido=="contenidopordefecto") {
+        return (
+            <div id="contenido">
+                <ContenidoPrincipalPorDefecto/>
+                <ContenidoSecundarioPorDefecto/>
+            </div>
+        )
+    }
 }

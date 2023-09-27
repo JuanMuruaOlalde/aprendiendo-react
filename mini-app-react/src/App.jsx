@@ -3,22 +3,21 @@ import { useState } from 'react'
 import { Contenido } from './componentes/Contenido'
 import { PieDePaginaConEnlacesDeUtilidad } from './componentes/PieDePagina'
 
-
 export default function App() {
 
-    const [tematicaDelContenido, setTematicaDelContenido] = useState("pordefecto");
+    const [tematicaDelContenido, setTematicaDelContenido] = useState("contenidopordefecto");
 
     function TituloPrincipal() {
         return (
             <header>
-                <h1>Este es el título de la cabecera de la página</h1>
+                <h1>Este es el título en la cabecera de la página [{tematicaDelContenido}]</h1>
             </header>
             )
     }
 
     function BotonIrAPaginaPrincipal() {
         return (
-            <button type="button" onClick={() => setTematicaDelContenido("pordefecto")}>
+            <button type="button" onClick={() => setTematicaDelContenido("contenidopordefecto")}>
                 <img
                     src="images/icons8-home-page-64.png"
                     alt="Home icon, icono de casita"
@@ -40,7 +39,7 @@ export default function App() {
     }
     function BotonIrAOtraPagina() {
         return (
-            <a href="otraPagina.html">Otra página</a>
+            <button type="button" onClick={() => setTematicaDelContenido("otrapagina")}>Otra Pagina</button>
         )
     }
     function Navegacion() {
@@ -49,9 +48,12 @@ export default function App() {
                 <p>Aquí van enlaces o botones para la navegación, para moverse dentro de esta web.</p>
                 <ul>
                     <li><BotonIrAPaginaPrincipal/></li>
-                    <li><BotonPonerContenidoDeGatos/></li>
-                    <li><BotonPonerContenidoDeJirafas/></li>
-                    <li><BotonIrAOtraPagina/></li>
+                    {["contenidopordefecto", "jirafas"].includes(tematicaDelContenido) &&
+                        <li><BotonPonerContenidoDeGatos/></li>}
+                    {["contenidopordefecto", "gatos"].includes(tematicaDelContenido) &&
+                        <li><BotonPonerContenidoDeJirafas/></li>}
+                    {["contenidopordefecto", "gatos", "jirafas"].includes(tematicaDelContenido) &&
+                        <li><BotonIrAOtraPagina/></li>}
                 </ul>
             </nav>
         )
@@ -59,7 +61,14 @@ export default function App() {
 
     return (
         <div>
-            <TituloPrincipal/>
+            {tematicaDelContenido=="otrapagina" &&
+                <header>
+                    <h1>Esta es otra página</h1>
+                </header>
+            }
+            {["contenidopordefecto", "gatos", "jirafas"].includes(tematicaDelContenido) &&
+                <TituloPrincipal/>
+            }
             <Navegacion/>
             <Contenido tematicaDelContenido={tematicaDelContenido}/>
             <PieDePaginaConEnlacesDeUtilidad/>
