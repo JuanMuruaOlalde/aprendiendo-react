@@ -1,6 +1,9 @@
 import { useState } from 'react'
 
-import { Contenido } from './componentes/Contenido'
+import { ContenidoPorDefecto } from './componentes/ContenidoPorDefecto'
+import { ContenidoDeGatos } from './componentes/ContenidoDeGatos'
+import { ContenidoDeJirafas } from './componentes/ContenidoDeJirafas'
+import { OtraPagina } from './componentes/OtraPagina'
 import { PieDePaginaConEnlacesDeUtilidad } from './componentes/PieDePagina'
 
 export default function App() {
@@ -10,7 +13,7 @@ export default function App() {
     function TituloPrincipal() {
         return (
             <header>
-                <h1>Este es el título en la cabecera de la página [{tematicaDelContenido}]</h1>
+                <h1>Página Principal [{tematicaDelContenido}]</h1>
             </header>
             )
     }
@@ -61,16 +64,30 @@ export default function App() {
 
     return (
         <div>
+            {["contenidopordefecto", "gatos", "jirafas"].includes(tematicaDelContenido) &&
+                <TituloPrincipal/>
+            }
             {tematicaDelContenido=="otrapagina" &&
                 <header>
                     <h1>Esta es otra página</h1>
                 </header>
             }
-            {["contenidopordefecto", "gatos", "jirafas"].includes(tematicaDelContenido) &&
-                <TituloPrincipal/>
-            }
+
             <Navegacion/>
-            <Contenido tematicaDelContenido={tematicaDelContenido}/>
+
+            {tematicaDelContenido=="contenidopordefecto" &&
+                <ContenidoPorDefecto/>
+            }
+            {tematicaDelContenido=="gatos" &&
+                <ContenidoDeGatos/>
+            }
+            {tematicaDelContenido=="jirafas" &&
+                <ContenidoDeJirafas/>
+            }
+            {tematicaDelContenido=="otrapagina" &&
+                <OtraPagina/>
+            }
+
             <PieDePaginaConEnlacesDeUtilidad/>
         </div>
     )
