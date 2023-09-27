@@ -1,6 +1,6 @@
 function ContenidoPrincipalPorDefecto() {
     return (
-        <div>
+        <div id="contenido_principal">
             <p>Aquí va el contenido principal.</p>
             <p>
                 Ese contenido puede ser <strong>contenido estático</strong>, escrito tal cual, como el escrito justo a
@@ -32,7 +32,7 @@ function ContenidoPrincipalPorDefecto() {
 
 function ContenidoSecundarioPorDefecto() {
     return (
-        <aside>
+        <aside id="contenido_secundario">
             <p>Aquí va contenido secundario o contenido explicativo del contenido principal</p>
         </aside>
     )
@@ -40,7 +40,7 @@ function ContenidoSecundarioPorDefecto() {
 
 function ContenidoPrincipalDeGatos() {
     return (
-        <div>
+        <div id="contenido_principal">
             <h2>El contenido de gatos</h2>
             <p>Un montón de texto sobre gatos.... asdkfasjf kas dfkjasd kaslkf aslk flaflaf laksj flkas</p>
             <a href="https://es.wikipedia.org/wiki/Felis_silvestris_catus" target="_blank">https://es.wikipedia.org/wiki/Felis_silvestris_catus</a>
@@ -50,7 +50,7 @@ function ContenidoPrincipalDeGatos() {
 
 function ContenidoSecundarioDeGatos() {
     return (
-        <aside>
+        <aside id="contenido_secundario">
             <p>
                 <a href="https://commons.wikimedia.org/wiki/File:Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg#/media/File:Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg/1200px-Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg" alt="Orange tabby cat sitting on fallen leaves-Hisashi-01A.jpg"/>
@@ -70,7 +70,7 @@ function ContenidoSecundarioDeGatos() {
 
 function ContenidoPrincipalDeJirafas() {
     return (
-        <div>
+        <div id="contenido_principal">
             <h2>El contenido de jirafas</h2>
             <p>Un montón de texto sobre jirafas....,zmxnc,nzcn cbxmvzb ,mn zmvb mzxcbm,zxbc m mcznbv mnjzbxcjvhbjzhxbc vjhzjhxcvb </p>
             <a href="https://es.wikipedia.org/wiki/Giraffa_camelopardalis" target="_blank">https://es.wikipedia.org/wiki/Giraffa_camelopardalis</a>
@@ -80,7 +80,7 @@ function ContenidoPrincipalDeJirafas() {
 
 function ContenidoSecundarioDeJirafas() {
     return (
-        <aside>
+        <aside id="contenido_secundario">
             <p>
                 <a href="https://commons.wikimedia.org/wiki/File:Giraffa_camelopardalis_angolensis.jpg#/media/Archivo:Giraffa_camelopardalis_angolensis.jpg">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Giraffa_camelopardalis_angolensis.jpg/1200px-Giraffa_camelopardalis_angolensis.jpg" alt="Giraffa camelopardalis angolensis.jpg"/>
@@ -98,7 +98,7 @@ function ContenidoSecundarioDeJirafas() {
 export function Contenido({tematicaDelContenido}) {
     if (tematicaDelContenido=="gatos") {
         return (
-            <div>
+            <div id="contenido">
                 <ContenidoPrincipalDeGatos/>
                 <ContenidoSecundarioDeGatos/>
             </div>
@@ -106,14 +106,14 @@ export function Contenido({tematicaDelContenido}) {
     }
     if (tematicaDelContenido=="jirafas") {
         return (
-            <div>
+            <div id="contenido">
                 <ContenidoPrincipalDeJirafas/>
                 <ContenidoSecundarioDeJirafas/>
             </div>
         )
     }
     return (
-        <div>
+        <div id="contenido">
             <ContenidoPrincipalPorDefecto/>
             <ContenidoSecundarioPorDefecto/>
         </div>
