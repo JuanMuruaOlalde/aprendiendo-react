@@ -78,6 +78,8 @@ Babel: un compilador/transpilador Javascript, para garantizar que el código fun
 
 <https://babeljs.io/>
 
+nota: También se usa para transpilar variantes de Javascript (por ejemplo [JSX](https://en.wikipedia.org/wiki/JSX_(JavaScript)) o [Typescript](https://en.wikipedia.org/wiki/TypeScript)) y convertirlas a Javascript.
+
 ## Herramientas para diseñar interfaces y experiencias de usuario
 
 Algunas de las más usadas son:
