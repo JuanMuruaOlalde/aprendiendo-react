@@ -1,13 +1,13 @@
-function Saludo({ nombre }) {
-    return <p>Hola, {nombre}.</p>;
+function Saludo({ nombre, destino }) {
+    return <p>Hola, {nombre}. Está usted en {destino}</p>;
 }
 
 function BloqueDeSaludos() {
     return (
         <div>
-            <Saludo nombre="Alice" />
-            <Saludo nombre="Bob" />
-            <Saludo nombre="Eve" />
+            <Saludo nombre="Alice" destino="MuyLejos"/>
+            <Saludo nombre="Bob" destino="MasLejos"/>
+            <Saludo nombre="Eve" destino="EntreUnLejosYOtro"/>
         </div>
     );
 }
