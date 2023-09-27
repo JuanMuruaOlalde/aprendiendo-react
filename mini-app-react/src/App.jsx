@@ -63,7 +63,7 @@ export default function App() {
     }
 
     return (
-        <div>
+        <>
             {["contenidopordefecto", "gatos", "jirafas"].includes(tematicaDelContenido) &&
                 <TituloPrincipal/>
             }
@@ -89,7 +89,7 @@ export default function App() {
             }
 
             <PieDePaginaConEnlacesDeUtilidad/>
-        </div>
+        </>
     )
     
 }
