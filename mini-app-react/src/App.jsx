@@ -8,19 +8,11 @@ import { PieDePaginaConEnlacesDeUtilidad } from './componentes/PieDePagina'
 
 export default function App() {
 
-    const [tematicaDelContenido, setTematicaDelContenido] = useState("contenidopordefecto");
-
-    function TituloPrincipal() {
-        return (
-            <header>
-                <h1>Página Principal [{tematicaDelContenido}]</h1>
-            </header>
-            )
-    }
+    const [paginaAMostrar, setPaginaAMostrar] = useState("primerapagina");
 
     function BotonIrAPaginaPrincipal() {
         return (
-            <button type="button" onClick={() => setTematicaDelContenido("contenidopordefecto")}>
+            <button type="button" onClick={() => setPaginaAMostrar("primerapagina")}>
                 <img
                     src="images/icons8-home-page-64.png"
                     alt="Home icon, icono de casita"
@@ -32,17 +24,17 @@ export default function App() {
     }
     function BotonPonerContenidoDeGatos() {
         return (
-            <button type="button" onClick={() => setTematicaDelContenido("gatos")}>Gatos</button>
+            <button type="button" onClick={() => setPaginaAMostrar("gatos")}>Gatos</button>
         )
     }
     function BotonPonerContenidoDeJirafas() {
         return (
-            <button type="button" onClick={() => setTematicaDelContenido("jirafas")}>Jirafas</button>
+            <button type="button" onClick={() => setPaginaAMostrar("jirafas")}>Jirafas</button>
         )
     }
     function BotonIrAOtraPagina() {
         return (
-            <button type="button" onClick={() => setTematicaDelContenido("otrapagina")}>Otra Pagina</button>
+            <button type="button" onClick={() => setPaginaAMostrar("otrapagina")}>Otra Pagina</button>
         )
     }
     function Navegacion() {
@@ -51,11 +43,11 @@ export default function App() {
                 <p>Aquí van enlaces o botones para la navegación, para moverse dentro de esta web.</p>
                 <ul>
                     <li><BotonIrAPaginaPrincipal/></li>
-                    {["contenidopordefecto", "jirafas"].includes(tematicaDelContenido) &&
+                    {["primerapagina", "jirafas"].includes(paginaAMostrar) &&
                         <li><BotonPonerContenidoDeGatos/></li>}
-                    {["contenidopordefecto", "gatos"].includes(tematicaDelContenido) &&
+                    {["primerapagina", "gatos"].includes(paginaAMostrar) &&
                         <li><BotonPonerContenidoDeJirafas/></li>}
-                    {["contenidopordefecto", "gatos", "jirafas"].includes(tematicaDelContenido) &&
+                    {["primerapagina", "gatos", "jirafas"].includes(paginaAMostrar) &&
                         <li><BotonIrAOtraPagina/></li>}
                 </ul>
             </nav>
@@ -64,10 +56,12 @@ export default function App() {
 
     return (
         <>
-            {["contenidopordefecto", "gatos", "jirafas"].includes(tematicaDelContenido) &&
-                <TituloPrincipal/>
+            {["primerapagina", "gatos", "jirafas"].includes(paginaAMostrar) &&
+                <header>
+                <h1>Página Principal [{paginaAMostrar}]</h1>
+                </header>
             }
-            {tematicaDelContenido=="otrapagina" &&
+            {paginaAMostrar=="otrapagina" &&
                 <header>
                     <h1>Esta es otra página</h1>
                 </header>
@@ -75,16 +69,16 @@ export default function App() {
 
             <Navegacion/>
 
-            {tematicaDelContenido=="contenidopordefecto" &&
+            {paginaAMostrar=="primerapagina" &&
                 <ContenidoPorDefecto/>
             }
-            {tematicaDelContenido=="gatos" &&
+            {paginaAMostrar=="gatos" &&
                 <ContenidoDeGatos/>
             }
-            {tematicaDelContenido=="jirafas" &&
+            {paginaAMostrar=="jirafas" &&
                 <ContenidoDeJirafas/>
             }
-            {tematicaDelContenido=="otrapagina" &&
+            {paginaAMostrar=="otrapagina" &&
                 <OtraPagina/>
             }
 
