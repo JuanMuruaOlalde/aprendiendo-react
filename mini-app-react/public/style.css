@@ -90,6 +90,7 @@ button[type="submit"] {
 
 .contenedor_de_una_respuesta {
     width: 100%;
+    min-height: 10em;
 }
 
 footer {

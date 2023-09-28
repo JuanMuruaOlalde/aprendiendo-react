@@ -3,7 +3,9 @@ import { useState } from 'react'
 import { ContenidoPorDefecto } from './componentes/ContenidoPorDefecto'
 import { ContenidoDeGatos } from './componentes/ContenidoDeGatos'
 import { ContenidoDeJirafas } from './componentes/ContenidoDeJirafas'
-import { OtraPagina } from './componentes/OtraPagina'
+import { Paralelepipedos } from './componentes/Paralelepipedos'
+import { Pizzas } from './componentes/Pizzas'
+import { Metereologia } from './componentes/Metereologia'
 import { PieDePaginaConEnlacesDeUtilidad } from './componentes/PieDePagina'
 
 export default function App() {
@@ -34,7 +36,25 @@ export default function App() {
     }
     function BotonIrAOtraPagina() {
         return (
-            <button type="button" onClick={() => setPaginaAMostrar("otrapagina")}>Otra Pagina</button>
+            <button type="button" onClick={() => setPaginaAMostrar("paralelepipedos")}>Otra página</button>
+        )
+    }
+    function BotonParalelepipedos() {
+        const estaDesactivado = (paginaAMostrar=="paralelepipedos");
+        return (
+            <button type="button" onClick={() => setPaginaAMostrar("paralelepipedos")} disabled={estaDesactivado}>Paralelepipedos</button>
+        )
+    }
+    function BotonPizzas() {
+        const estaDesactivado = (paginaAMostrar=="pizzas");
+        return (
+            <button type="button" onClick={() => setPaginaAMostrar("pizzas")} disabled={estaDesactivado}>Pizzas</button>
+        )
+    }
+    function BotonMetereologia() {
+        const estaDesactivado = (paginaAMostrar=="metereologia");
+        return (
+            <button type="button" onClick={() => setPaginaAMostrar("metereologia")} disabled={estaDesactivado}>Metereologia</button>
         )
     }
     function Navegacion() {
@@ -44,11 +64,21 @@ export default function App() {
                 <ul>
                     <li><BotonIrAPaginaPrincipal/></li>
                     {["primerapagina", "jirafas"].includes(paginaAMostrar) &&
-                        <li><BotonPonerContenidoDeGatos/></li>}
+                        <li><BotonPonerContenidoDeGatos/></li>
+                    }
                     {["primerapagina", "gatos"].includes(paginaAMostrar) &&
-                        <li><BotonPonerContenidoDeJirafas/></li>}
+                        <li><BotonPonerContenidoDeJirafas/></li>
+                    }
                     {["primerapagina", "gatos", "jirafas"].includes(paginaAMostrar) &&
-                        <li><BotonIrAOtraPagina/></li>}
+                        <li><BotonIrAOtraPagina/></li>
+                    }
+                    {["paralelepipedos", "pizzas", "metereologia"].includes(paginaAMostrar) &&
+                        <>
+                            <li><BotonParalelepipedos/></li>
+                            <li><BotonPizzas/></li>
+                            <li><BotonMetereologia/></li>
+                        </>
+                    }
                 </ul>
             </nav>
         )
@@ -61,7 +91,7 @@ export default function App() {
                 <h1>Página Principal [{paginaAMostrar}]</h1>
                 </header>
             }
-            {paginaAMostrar=="otrapagina" &&
+            {["paralelepipedos", "pizzas", "metereologia"].includes(paginaAMostrar) &&
                 <header>
                     <h1>Esta es otra página</h1>
                 </header>
@@ -78,8 +108,14 @@ export default function App() {
             {paginaAMostrar=="jirafas" &&
                 <ContenidoDeJirafas/>
             }
-            {paginaAMostrar=="otrapagina" &&
-                <OtraPagina/>
+            {paginaAMostrar=="paralelepipedos" &&
+                <Paralelepipedos/>
+            }
+            {paginaAMostrar=="pizzas" &&
+                <Pizzas/>
+            }
+            {paginaAMostrar=="metereologia" &&
+                <Metereologia/>
             }
 
             <PieDePaginaConEnlacesDeUtilidad/>
