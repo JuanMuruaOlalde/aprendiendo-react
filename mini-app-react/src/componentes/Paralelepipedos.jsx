@@ -3,7 +3,9 @@ import { useState } from "react";
 export function Paralelepipedos() {
     
     const [unLado, setUnLado] = useState("");
+    const [errorEnUnLado, setErrorEnUnLado] = useState("");
     const [otroLado, setOtroLado] = useState("");
+    const [errorEnOtroLado, setErrorEnOtroLado] = useState("");
     const [respuesta, setRespuesta] = useState("");
 
     function CalcularParalelepipedo() {
@@ -12,13 +14,26 @@ export function Paralelepipedos() {
         setRespuesta("Perimetro = " + perimetro.toString() + "\n" + "Area = " + area.toString());
     }
 
+    let comprobarSiEsNumero = new RegExp("^[0-9]+[.]?[0-9]*$");
+    const MENSAJE_ERROR_NOESNUMERO = "Se ha de teclear un número. (Y el separador decimal, si lo hay, ha de ser punto .)";
+
     function gestionarCambiosEnUnLado(evento) {
-        setUnLado(evento.target.value);
         setRespuesta("");
+        setUnLado(evento.target.value);
+        if (comprobarSiEsNumero.test(evento.target.value)) {
+            setErrorEnUnLado("");
+        } else {
+            setErrorEnUnLado(MENSAJE_ERROR_NOESNUMERO);
+        }
     }
     function gestionarCambiosEnOtroLado(evento) {
-        setOtroLado(evento.target.value);
         setRespuesta("");
+        setOtroLado(evento.target.value);
+        if (comprobarSiEsNumero.test(evento.target.value)) {
+            setErrorEnOtroLado("");
+        } else {
+            setErrorEnOtroLado(MENSAJE_ERROR_NOESNUMERO);
+        }
     }
 
     return (
@@ -28,16 +43,16 @@ export function Paralelepipedos() {
             <p>
                 <label for="unLado">
                     Un lado:
-                    <input type="text" value={unLado} onChange={gestionarCambiosEnUnLado} pattern="[0-9]+\.?[0-9]?" size="8" required />
-                    <small> (nota: usar separador decimal punto .)</small>
-                </label
-                >
+                    <input type="text" value={unLado} onChange={gestionarCambiosEnUnLado} size="8" />
+                </label>
+                <div style={{color: "red"}}>{errorEnUnLado}</div>
             </p>
             <p>
                 <label for="otroLado">
                     Otro lado:
-                    <input type="text" value={otroLado} onChange={gestionarCambiosEnOtroLado} pattern="[0-9]+\.?[0-9]?" size="8" required/>
+                    <input type="text" value={otroLado} onChange={gestionarCambiosEnOtroLado} size="8" />
                 </label>
+                <div style={{color: "red"}}>{errorEnOtroLado}</div>
             </p>
             <p>
                 <button type="button" onClick={CalcularParalelepipedo}>Calcular perímetro y área</button>
