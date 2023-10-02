@@ -1,20 +1,80 @@
 # Resumen rápido para empezar a trabajar con Node.js y React
 
-## Nomenclatura, estructura de carpetas
+## Resumen del resumen:
 
-Cada cual se organiza la aplicación web como le apetece. Pero suele haber una serie de carpetas bastante habituales:
+### para ponerse a trabajar ¡ya!
 
-- _public_ (o también suele ser _www_), para el contenido web estático. Si hay mucho contenido, se suelen contemplar algunas subcarpetas como por ejemplo:
+Partir de la infraestructura base dada por el proyecto https://create-react-app.dev/
 
-  - _css_ (o también suele ser _styles_), para contenido CSS.
-  - _js_ (o también suele ser _javascript_), para contenido Javascript.
-  - _img_ (o también suele ser _images_ o _assets_), para imagenes, iconos, fuentes,...
-  - _data_
-  - _pages_, para contenido HTML.
+-   Descargar e instalar Node.js (https://nodejs.org/es/download)
 
-- _src_, para el código fuente que genera el contenido web dinámico. Salvo en aplicaciones muy pequeñas, debajo de _src_ siempre suele ser necesario algún tipo de estructura de subcarpetas para organizar los distintos módulos.
+-   Situarse en la carpeta donde se vaya a crear la carpeta del proyecto  
+    y ejecutar el comando `npx create-react-app nombrecarpetaproyecto`
 
-## Entorno de desarrollo: Node.js
+### para entender un poco mejor lo que se está haciendo...
+
+Preparar una infraestructura mínima manualmente:
+
+-   Descargar e instalar Node.js (https://nodejs.org/es/download)
+
+-   Crear una carpeta nueva y situarse en ella. Ejecutar el comando `npm init -yes` (para crear un archivo `package.json` básico en esa carpeta)
+
+-   Instalar un empaquetador. Por ejemplo: `npm install --save-dev esbuild`
+
+    Y, para él, dentro del apartado "scripts" del archivo package.json, añadir estas dos lineas:
+
+    ```
+    "start": "esbuild src/index.jsx --bundle --servedir=public/ --outdir=public/js",
+    "build": "esbuild src/index.jsx --bundle --minify --outdir=public/js",
+    ```
+
+-   Instalar un linter. Por ejemplo: `npm install --save-dev eslint`
+
+-   Instalar una plataforma de tests unitarios. Por ejemplo `npm install --save-dev jest`
+
+    Y, para ella, dentro del apartado "scripts" del archivo package.json, añadir esta linea:
+
+    ```
+    "test": "jest"
+    ```
+
+-   Instalar los dos módulos mínimos de React: `npm install react react-dom`
+
+-   Crear una estructura básica de carpetas y archivos. Por ejemplo:
+
+![pantallazo estructura minima de app React](./imagenes/pantallazo%20estructura%20minima%20de%20app%20React.png)
+
+    nota: Mirar al final de este documento, para ver un ejemplo del contenido mínimo de los archivos básicos.
+
+    - index.html proporciona el marco estático y arranca React (llama a index.js)
+
+    - index.js proporciona la raiz (root) para React y carga el primer componente (App.js)
+
+    - App.js gestiona y carga los demás componentes...
+
+    - ...cada componente puede a su vez gestionar y cargar otros componentes.
+
+## Un poco de nomenclatura, estructura de carpetas
+
+Cada cual se organiza la aplicación web como le apetece. Y además React es "no-opinionated", es decir, deja a cada cual trabajar como le apetezca.
+
+Pero una serie de carpetas suelen aparecer con bastante frecuencia:
+
+-   _public_ (o también suele ser _www_), para el contenido web estático.
+
+    Si hay mucho contenido, se suelen contemplar algunas subcarpetas. Como por ejemplo:
+
+    -   _css_ (o también suele ser _styles_), para contenido CSS.
+    -   _js_ (o también suele ser _javascript_), para contenido Javascript.
+    -   _img_ (o también suele ser _images_ o _assets_), para imagenes, iconos, fuentes,...
+    -   _data_
+    -   _pages_, para contenido HTML.
+
+-   _src_, para el código fuente que genera el contenido web dinámico.
+
+    Salvo en aplicaciones muy pequeñas, debajo de _src_ también suele ser necesario algún tipo de estructura de subcarpetas. Por ejemplo, en apps React es típico que haya una subcarpeta _components_ y algunas otras...
+
+## La herramienta base: Node.js
 
 Todos los navegadores web traen un motor para ejecutar código Javascript. Pero si se quiere ejecutar Javascript fuera del navegador, por ejemplo herramientas en un IDE o código en un backend. Se puede recurrir al motor Node.js
 
@@ -77,11 +137,11 @@ PS C:\Users\zzz\Documents\aprendiendo-react\zz-pruebasYexperimentos>
 
 A partir de aquí, se pueden ir instalando más paquetes en nuestra aplicación.
 
-Los paquetes se pueden instalar en la propia aplicación. (Quedarán en una carpeta llamada `node-modules`. Carpeta que deberemos excluir en .gitignore para no subirla al repositorio Git. El contenido de esa carpeta se puede recuperar automáticamente con simplemente teclear el comando `npm install`)
+Los paquetes se pueden instalar en la propia aplicación. Quedarán en una carpeta llamada `node-modules`. Esa carpeta se ha de excluir en .gitignore, ya que no merece subirla al repositorio Git (el contenido de esa carpeta se puede recuperar automáticamente simplemente tecleando el comando `npm install`).
 
-O también pueden instalarse de forma global (`npm install -global`). Para tenerlos siempre disponibles en el PC y no tener que descargarlos cada vez desde el repositorio npm en Internet.
+Los paquetes también pueden instalarse de forma global (`npm install -global`). Para tenerlos disponibles en el PC y no tener que descargarlos cada vez desde el repositorio npm en Internet.
 
-## Un empaquetador y un servidor web para pruebas
+## Una herramienta imprescindible: empaquetador y servidor web para pruebas
 
 Algunos de los más usados son webpack, parcel o esbuild
 
@@ -98,12 +158,12 @@ y luego retocar el archivo package.json para poder arrancar el servidor web de p
 ```
     "scripts": {
         "start": "esbuild src/index.jsx --bundle --servedir=public/ --outdir=public/js",
-        "build": "esbuild src/index.jsx --bundle --outfile=out.js"
+        "build": "esbuild src/index.jsx --bundle --minify --outdir=public/js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
 ```
 
-Nota: El comando `npm build`genera una carpeta _build_ con todo el contenido que deberemos desplegar al servidor web de producción.
+Nota: El comando `npm run build` genera y añade una carpeta js a la carpeta public; para tener así todo el contenido que deberemos desplegar al servidor web de producción.
 
 ### parcel
 
@@ -137,52 +197,49 @@ Nota: El comando `npm build`genera una carpeta _build_ con todo el contenido que
 
 -pendiente- escribir este apartado.
 
-## Esqueleto mínimo de una aplicación React
+## Esqueleto mínimo de una aplicación React para aplicaciones pequeñas
 
-Para aplicaciones pequeñas, hay que instalar como mínimo los dos paquetes base de React:
-´´´
-npm install react react-dom
-´´´
+![pantallazo estructura minima de app React](./imagenes/pantallazo%20estructura%20minima%20de%20app%20React.png)
 
-Y se necesita tener un transpilador que procese JSX para comvertirlo en js. Por ejemplo,
+-   Hay que instalar como mínimo los dos paquetes base de React.
 
-- esbuild lo soporta directamente.
-  https://esbuild.github.io/content-types/#jsx
+    ```
+    npm install react react-dom
+    ```
 
-- parcel lo soporta directamente.
-  https://parceljs.org/recipes/react/
+-   Se necesita tener un transpilador que procese JSX para convertirlo en js. Por ejemplo,
 
-- webpack usa Babel.
-  https://webpack.js.org/configuration/configuration-languages/#babel-and-jsx
+    -   esbuild lo soporta directamente.
+        https://esbuild.github.io/content-types/#jsx
 
-Para aplicaciones grandes, se puede partir de la base proporcionada por create-react-app:
-´´´
-npx create-react-app nombredemiaplicacion
-´´´
-Este comando crea una carpeta _nombredemiaplicacion_ con toda una estructura de subcarpetas y archivos dentro de ella. Junto con un package.json con multitud de herramientas y bibliotecas. Listo para desarrollar con React prácticamente cualquier cosa que se nos ocurra.
+    -   parcel lo soporta directamente.
+        https://parceljs.org/recipes/react/
 
-https://create-react-app.dev/
+    -   webpack usa Babel.
+        https://webpack.js.org/configuration/configuration-languages/#babel-and-jsx
 
-### La página HTML de arranque: public/index.html
+-   Tenemos que montar nosotros mismos las carpetas y archivos base: `index.html`, `index.js` y `App.js`
+
+### **public/index.html** (la página HTML de arranque)
 
 ```
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="utf-8" />
-        <title>Pagina demo</title>
+        <title>pruebasYexperimentos</title>
         <!--Este título es para la pestaña del navegador-->
         <meta
             name="description"
             content="Primeros pasos para aprender React..."
         />
-        <meta name="author" content="Juan Murua Olalde" />
+        <meta name="author" content="xxxxxxxxxxxxx" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="index.css" />
     </head>
 
     <body>
-        <div id="contenedor-raiz"></div>
+        <div id="contenedor-raiz-para-react"></div>
         <script src="js/index.js"></script>
     </body>
 </html>
@@ -190,17 +247,18 @@ https://create-react-app.dev/
 
 Nota: Para facilitar la descarga desde el servidor web que sirve la aplicación. Se suele transpilar/empaquetar todo el códiog Javascript nuestro más el código javascript de React en un solo archivo index.js que se sirve desde la parte estática.
 
-### El script JS de arranque: src/index.jsx
+### **src/index.jsx** (el script JS que inicia la parte dinámica)
 
 ```
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import App from "./App";
+import { App } from "./App";
 
 window.React = React;
 
-const root = ReactDOM.createRoot(document.getElementById("contenedor-raiz"));
+const rootContainer = document.getElementById("contenedor-raiz-para-react");
+const root = ReactDOM.createRoot(rootContainer);
 root.render(
     <React.StrictMode>
         <App />
@@ -208,24 +266,76 @@ root.render(
 );
 ```
 
-### La base de la aplicacion: App.jsx
+### **App.jsx** (el componente base sobre el que se construye la aplicacion)
+
+Por ejemplo:
 
 ```
-function Saludo({ nombre, destino }) {
-    return <p>Hola, {nombre}. Está usted en {destino}</p>;
-}
+import { useState } from "react";
 
-function BloqueDeSaludos() {
+import { HolaMundo } from "./components/ComponentesDePrueba";
+import { Saludo } from "./components/ComponentesDePrueba";
+//nota: Las variables que un componente padre pasa a un componente hijo,
+//      es lo que se denomina "propiedades" ("props")
+
+export function App() {
+    // nota: Las variables internas de un componente,
+    //       es lo que se denomina "variables de estado" ("state")
+    const [unaVariable, setUnaVariable] = useState(5);
+    const [otraVariable, setOtraVariable] = useState("algo");
+
     return (
-        <div>
-            <Saludo nombre="Alice" destino="MuyLejos"/>
-            <Saludo nombre="Bob" destino="MasLejos"/>
-            <Saludo nombre="Eve" destino="EntreUnLejosYOtro"/>
-        </div>
+        <>
+            <p>Aquí va el contenido de la pagina</p>
+            <p>
+                Se escribe con una mezcla entre código HTML y código Javascript.
+                Es decir, se escribe en JSX
+            </p>
+            <p>
+                Por ejemplo {otraVariable} mezclado con {unaVariable}
+            </p>
+            <p>Y mezclado con componentes React. Por ejemplo:</p>
+            <Saludo nombre="Benzirpi" apellido="Mirvento" />
+            <p>Los componentes pueden aparecer o no...</p>
+            {unaVariable > 3 && <HolaMundo />}
+        </>
     );
 }
+```
 
-export default function App() {
-    return <BloqueDeSaludos />;
+### Otros componentes...
+
+Por ejemplo:
+
+```
+//Los componentes React no son más que funciones que devuelven JSX
+
+export function HolaMundo() {
+    return <p>Hola, mundo.</p>;
+}
+
+export function Saludo({ nombre, apellido }) {
+    return (
+        <>
+            <p>Buenos dias, {nombre}.</p>
+            <p> Nos alegramos de que se apellide {apellido}.</p>
+        </>
+    );
 }
 ```
+
+### Resultado con los archivos mínimos indicados:
+
+![pantallazo resultado app minima](./imagenes/pantallazo%20resultado%20app%20minima.png)
+
+## Esqueleto de una aplicación React para aplicaciones grandes
+
+Para aplicaciones grandes, se puede partir desde la infraestructura base proporcionada por el proyecto https://create-react-app.dev/:
+
+```
+npx create-react-app nombredemiaplicacion
+```
+
+Este comando crea una carpeta _nombredemiaplicacion_ con toda una estructura de subcarpetas y archivos dentro de ella. Junto con multitud de herramientas y bibliotecas Javascript. Quedando listo para desarrollar con React prácticamente cualquier cosa que se nos ocurra.
+
+![pantallazo estructura inicial de create-react-app](./imagenes/pantallazo%20estructura%20inicial%20de%20create-react-app.png)
