@@ -4,15 +4,15 @@
 
 Cada cual se organiza la aplicación web como le apetece. Pero suele haber una serie de carpetas bastante habituales:
 
--   _public_ (o también suele ser _www_), para el contenido web estático. Si hay mucho contenido, se suelen contemplar algunas subcarpetas como por ejemplo:
+- _public_ (o también suele ser _www_), para el contenido web estático. Si hay mucho contenido, se suelen contemplar algunas subcarpetas como por ejemplo:
 
-    -   _css_ (o también suele ser _styles_), para contenido CSS.
-    -   _js_ (o también suele ser _javascript_), para contenido Javascript.
-    -   _img_ (o también suele ser _images_ o _assets_), para imagenes, iconos, fuentes,...
-    -   _data_
-    -   _pages_, para contenido HTML.
+  - _css_ (o también suele ser _styles_), para contenido CSS.
+  - _js_ (o también suele ser _javascript_), para contenido Javascript.
+  - _img_ (o también suele ser _images_ o _assets_), para imagenes, iconos, fuentes,...
+  - _data_
+  - _pages_, para contenido HTML.
 
--   _src_, para el código fuente que genera el contenido web dinámico. Salvo en aplicaciones muy pequeñas, debajo de _src_ siempre suele ser necesario algún tipo de estructura de subcarpetas para organizar los distintos módulos.
+- _src_, para el código fuente que genera el contenido web dinámico. Salvo en aplicaciones muy pequeñas, debajo de _src_ siempre suele ser necesario algún tipo de estructura de subcarpetas para organizar los distintos módulos.
 
 ## Entorno de desarrollo: Node.js
 
@@ -138,6 +138,30 @@ Nota: El comando `npm build`genera una carpeta _build_ con todo el contenido que
 -pendiente- escribir este apartado.
 
 ## Esqueleto mínimo de una aplicación React
+
+Para aplicaciones pequeñas, hay que instalar como mínimo los dos paquetes base de React:
+´´´
+npm install react react-dom
+´´´
+
+Y se necesita tener un transpilador que procese JSX para comvertirlo en js. Por ejemplo,
+
+- esbuild lo soporta directamente.
+  https://esbuild.github.io/content-types/#jsx
+
+- parcel lo soporta directamente.
+  https://parceljs.org/recipes/react/
+
+- webpack usa Babel.
+  https://webpack.js.org/configuration/configuration-languages/#babel-and-jsx
+
+Para aplicaciones grandes, se puede partir de la base proporcionada por create-react-app:
+´´´
+npx create-react-app nombredemiaplicacion
+´´´
+Este comando crea una carpeta _nombredemiaplicacion_ con toda una estructura de subcarpetas y archivos dentro de ella. Junto con un package.json con multitud de herramientas y bibliotecas. Listo para desarrollar con React prácticamente cualquier cosa que se nos ocurra.
+
+https://create-react-app.dev/
 
 ### La página HTML de arranque: public/index.html
 
