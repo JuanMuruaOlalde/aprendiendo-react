@@ -1,25 +1,25 @@
 # Resumen rápido para empezar a trabajar con Node.js y React
 
-## Resumen del resumen:
+## Resumen del resumen
 
-### para ponerse a trabajar ¡ya!
+### para ponerse a trabajar ¡ya
 
-Partir de la infraestructura base dada por el proyecto https://create-react-app.dev/
+Partir de la infraestructura base dada por el proyecto <https://create-react-app.dev/>
 
--   Descargar e instalar Node.js (https://nodejs.org/es/download)
+- Descargar e instalar Node.js (<https://nodejs.org/es/download>)
 
--   Situarse en la carpeta donde se vaya a crear la carpeta del proyecto  
+- Situarse en la carpeta donde se vaya a crear la carpeta del proyecto  
     y ejecutar el comando `npx create-react-app nombrecarpetaproyecto`
 
-### para entender un poco mejor lo que se está haciendo...
+### para entender un poco mejor lo que se está haciendo
 
 Preparar una infraestructura mínima manualmente:
 
--   Descargar e instalar Node.js (https://nodejs.org/es/download)
+- Descargar e instalar Node.js (<https://nodejs.org/es/download>)
 
--   Crear una carpeta nueva y situarse en ella. Ejecutar el comando `npm init -yes` (para crear un archivo `package.json` básico en esa carpeta)
+- Crear una carpeta nueva y situarse en ella. Ejecutar el comando `npm init -yes` (para crear un archivo `package.json` básico en esa carpeta)
 
--   Instalar un empaquetador. Por ejemplo: `npm install --save-dev esbuild`
+- Instalar un empaquetador. Por ejemplo: `npm install --save-dev esbuild`
 
     Y, para él, dentro del apartado "scripts" del archivo package.json, añadir estas dos lineas:
 
@@ -28,9 +28,9 @@ Preparar una infraestructura mínima manualmente:
     "build": "esbuild src/index.jsx --bundle --minify --outdir=public/js",
     ```
 
--   Instalar un linter. Por ejemplo: `npm install --save-dev eslint`
+- Instalar un linter. Por ejemplo: `npm install --save-dev eslint`
 
--   Instalar una plataforma de tests unitarios. Por ejemplo `npm install --save-dev jest`
+- Instalar una plataforma de tests unitarios. Por ejemplo `npm install --save-dev jest`
 
     Y, para ella, dentro del apartado "scripts" del archivo package.json, añadir esta linea:
 
@@ -38,9 +38,9 @@ Preparar una infraestructura mínima manualmente:
     "test": "jest"
     ```
 
--   Instalar los dos módulos mínimos de React: `npm install react react-dom`
+- Instalar los dos módulos mínimos de React: `npm install react react-dom`
 
--   Crear una estructura básica de carpetas y archivos. Por ejemplo:
+- Crear una estructura básica de carpetas y archivos. Por ejemplo:
 
 ![pantallazo estructura minima de app React](./imagenes/pantallazo%20estructura%20minima%20de%20app%20React.png)
 
@@ -60,17 +60,17 @@ Cada cual se organiza la aplicación web como le apetece. Y además React es "no
 
 Pero una serie de carpetas suelen aparecer con bastante frecuencia:
 
--   _public_ (o también suele ser _www_), para el contenido web estático.
+- _public_ (o también suele ser _www_), para el contenido web estático.
 
     Si hay mucho contenido, se suelen contemplar algunas subcarpetas. Como por ejemplo:
 
-    -   _css_ (o también suele ser _styles_), para contenido CSS.
-    -   _js_ (o también suele ser _javascript_), para contenido Javascript.
-    -   _img_ (o también suele ser _images_ o _assets_), para imagenes, iconos, fuentes,...
-    -   _data_
-    -   _pages_, para contenido HTML.
+  - _css_ (o también suele ser _styles_), para contenido CSS.
+  - _js_ (o también suele ser _javascript_), para contenido Javascript.
+  - _img_ (o también suele ser _images_ o _assets_), para imagenes, iconos, fuentes,...
+  - _data_
+  - _pages_, para contenido HTML.
 
--   _src_, para el código fuente que genera el contenido web dinámico.
+- _src_, para el código fuente que genera el contenido web dinámico.
 
     Salvo en aplicaciones muy pequeñas, debajo de _src_ también suele ser necesario algún tipo de estructura de subcarpetas. Por ejemplo, en apps React es típico que haya una subcarpeta _components_ y algunas otras...
 
@@ -78,9 +78,9 @@ Pero una serie de carpetas suelen aparecer con bastante frecuencia:
 
 Todos los navegadores web traen un motor para ejecutar código Javascript. Pero si se quiere ejecutar Javascript fuera del navegador, por ejemplo herramientas en un IDE o código en un backend. Se puede recurrir al motor Node.js
 
-Se trata simplemente de descargarlo desde https://nodejs.org/es/download e instalarlo en el PC.
+Se trata simplemente de descargarlo desde <https://nodejs.org/es/download> e instalarlo en el PC.
 
-Uno de los puntos fuertes de Node.js es su gestión de paquetes y la amplia biblioteca existente: https://www.npmjs.com/ (nota: Para hojear en la biblioteca, es necesario crearse una cuenta.)
+Uno de los puntos fuertes de Node.js es su gestión de paquetes y la amplia biblioteca existente: <https://www.npmjs.com/> (nota: Para hojear en la biblioteca, es necesario crearse una cuenta.)
 
 ![pantallazo biblioteca npm](./imagenes/pantallazo%20biblioteca%20npm.png)
 
@@ -147,7 +147,7 @@ Algunos de los más usados son webpack, parcel o esbuild
 
 ### esbuild
 
-https://esbuild.github.io/getting-started/#install-esbuild
+<https://esbuild.github.io/getting-started/#install-esbuild>
 
 ```
 npm install --save-dev esbuild
@@ -167,7 +167,7 @@ Nota: El comando `npm run build` genera y añade una carpeta js a la carpeta pub
 
 ### parcel
 
-https://parceljs.org/getting-started/webapp/
+<https://parceljs.org/getting-started/webapp/>
 
 ```
 npm install --save-dev parcel
@@ -201,24 +201,24 @@ Nota: El comando `npm build`genera una carpeta _build_ con todo el contenido que
 
 ![pantallazo estructura minima de app React](./imagenes/pantallazo%20estructura%20minima%20de%20app%20React.png)
 
--   Hay que instalar como mínimo los dos paquetes base de React.
+- Hay que instalar como mínimo los dos paquetes base de React.
 
     ```
     npm install react react-dom
     ```
 
--   Se necesita tener un transpilador que procese JSX para convertirlo en js. Por ejemplo,
+- Se necesita tener un transpilador que procese JSX para convertirlo en js. Por ejemplo,
 
-    -   esbuild lo soporta directamente.
-        https://esbuild.github.io/content-types/#jsx
+  - esbuild lo soporta directamente.
+        <https://esbuild.github.io/content-types/#jsx>
 
-    -   parcel lo soporta directamente.
-        https://parceljs.org/recipes/react/
+  - parcel lo soporta directamente.
+        <https://parceljs.org/recipes/react/>
 
-    -   webpack usa Babel.
-        https://webpack.js.org/configuration/configuration-languages/#babel-and-jsx
+  - webpack usa Babel.
+        <https://webpack.js.org/configuration/configuration-languages/#babel-and-jsx>
 
--   Tenemos que montar nosotros mismos las carpetas y archivos base: `index.html`, `index.js` y `App.js`
+- Tenemos que montar nosotros mismos las carpetas y archivos base: `index.html`, `index.js` y `App.js`
 
 ### **public/index.html** (la página HTML de arranque)
 
@@ -281,8 +281,8 @@ import { Saludo } from "./components/ComponentesDePrueba";
 export function App() {
     // nota: Las variables internas de un componente,
     //       es lo que se denomina "variables de estado" ("state")
-    const [unaVariable, setUnaVariable] = useState(5);
-    const [otraVariable, setOtraVariable] = useState("algo");
+    const [numeroDeCaso, setNumeroDeCaso] = useState(5);
+    const [textoTranscendente, setTextoTranscendente] = useState("algo");
 
     return (
         <>
@@ -292,18 +292,18 @@ export function App() {
                 Es decir, se escribe en JSX
             </p>
             <p>
-                Por ejemplo {otraVariable} mezclado con {unaVariable}
+                Por ejemplo {textoTranscendente} mezclado con {numeroDeCaso}
             </p>
             <p>Y mezclado con componentes React. Por ejemplo:</p>
             <Saludo nombre="Benzirpi" apellido="Mirvento" />
             <p>Los componentes pueden aparecer o no...</p>
-            {unaVariable > 3 && <HolaMundo />}
+            {numeroDeCaso > 3 && <HolaMundo />}
         </>
     );
 }
 ```
 
-### Otros componentes...
+### Otros componentes
 
 Por ejemplo:
 
@@ -324,13 +324,13 @@ export function Saludo({ nombre, apellido }) {
 }
 ```
 
-### Resultado con los archivos mínimos indicados:
+### Resultado con los archivos mínimos indicados
 
 ![pantallazo resultado app minima](./imagenes/pantallazo%20resultado%20app%20minima.png)
 
 ## Esqueleto de una aplicación React para aplicaciones grandes
 
-Para aplicaciones grandes, se puede partir desde la infraestructura base proporcionada por el proyecto https://create-react-app.dev/:
+Para aplicaciones grandes, se puede partir desde la infraestructura base proporcionada por el proyecto <https://create-react-app.dev/>:
 
 ```
 npx create-react-app nombredemiaplicacion
@@ -339,3 +339,70 @@ npx create-react-app nombredemiaplicacion
 Este comando crea una carpeta _nombredemiaplicacion_ con toda una estructura de subcarpetas y archivos dentro de ella. Junto con multitud de herramientas y bibliotecas Javascript. Quedando listo para desarrollar con React prácticamente cualquier cosa que se nos ocurra.
 
 ![pantallazo estructura inicial de create-react-app](./imagenes/pantallazo%20estructura%20inicial%20de%20create-react-app.png)
+
+## Conceptos base para entender React
+
+### COMPONENTs
+
+Los componentes son funciones que devuelven código JSX (mezcla de HTML y {expresiones javascript}, para que React pueda renderizarlo en el browser cuando sea preciso.
+
+Por ejemplo:
+
+```
+export function Saludo({ nombre, apellido }) {
+    return (
+        <>
+            <p>Buenos dias, {nombre}.</p>
+            <p> Nos alegramos de que se apellide {apellido}.</p>
+        </>
+    );
+}
+```
+
+### PROPs
+
+Las propiedades son información que un componente pasa a otro. (Es decir, parámetros en las funciones)
+
+Por ejemplo, podriamos usar el componente del ejemplo anterior:
+
+```
+    <Saludo nombre="Benzirpi" apellido="Mirvento" />
+```
+
+### STATE
+
+El estado es información que un componente usa internamente. (Es decir, variables "especiales" que React entiende cuando renderiza componentes.)
+
+Por ejemplo:
+
+```
+    const [numeroDeCaso, setNumeroDeCaso] = useState(5);
+    // El valor inicial se pasa directamente en la llamada a useState().
+    // Posteriormente se puede actualizar llamando a setNumeroDeCaso().
+```
+
+### HOOKs
+
+Los anzuelos son funciones especiales que permiten "interceptar" el flujo normal de información entre componentes React. Para permitir que funciones "puras" (sin efectos secundarios fuera de ellas) puedan realizar acciones "impuras" (es decir, interactuar con el entorno fuera de la función).
+
+nota: En el paradigma de programación funcional. El único efecto exterior de una función ha de ser devolver un resultado. Resultado que obtendrá manipulando solamente los parámetros que recibe y el algoritmo interno que contenga; sin ninguna otra interacción con nada exterior a la función.
+
+<https://react.dev/reference/react>
+
+### STORE, ACTIONs, REDUCER
+
+En aplicaciones muy grandes. El manejo de los estados puede llegar a ser muy complejo y propenso a errores.
+
+Para hacerlo más manejable. Meta aboga por el uso del patron de arquitectura que han denominado Flux.
+
+Por ejemplo, la biblioteca Redux se basa en ese patrón.
+
+- El estado se almacena en un Store.
+
+- Las interaciones del usuario en la Vista (pantalla) provocan que se despache (dispatch) una Acción a un Reducer.
+
+- El Reducer notifica al Store para que actualice el estado que contiene de acuerdo a la Acción solicitada.
+
+- El Store a su vez notifica a los componentes que sea preciso para que se rendericen y reflejen el nuevo estado en la pantalla.
+
+![Redux data flow](https://d33wubrfki0l68.cloudfront.net/01cc198232551a7e180f4e9e327b5ab22d9d14e7/b33f4/assets/images/reduxdataflowdiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
