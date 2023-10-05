@@ -1,8 +1,13 @@
 # Aprendiendo React
 
-Mirar en la carpeta `_docs_` para enlaces a sitios web que me han parecido interesantes en este proceso de aprendizaje.
+Primero mirar en la carpeta `_docs_` para enlaces a sitios web que me han parecido interesantes en este proceso de aprendizaje.
 
-`mini-app-react` son pruebas intentando utilizar React simplemente como apoyo/complemento para la triada tradicional de HTML-CSS-JS.
+Mirar luego `pruebasYexperimentos`, que es un comienzo para hacer algo.
 
-`app-react` son pruebas intentando hacer lo que se denomina hoy en dia "una aplicación React".
-(basada en https://github.com/facebook/create-react-app)
+Y luego mirar `mini-app-react`, que es una prueba utilizando React básico. Es una translación de otro ejercicio anterior que habia hecho usando solo la tradicional triada HTML-CSS-JS. (<https://github.com/JuanMuruaOlalde/miniAppWeb>)
+
+`app-react` son pruebas con el "framework (más o menos)estandar" de Meta. Un punto de partida (más o menos)estandar para prácticamente cualquier aplicación React más o menos grande...
+
+<https://create-react-app.dev/>
+
+<https://github.com/facebook/create-react-app>
