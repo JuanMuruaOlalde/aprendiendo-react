@@ -1,7 +1,7 @@
 {
-  "name": "mini-backend-api",
+  "name": "un-pequeño-backend-para-pruebas",
   "version": "1.1.1",
-  "description": "Un mini backend para servir unos datos de prueba con los que trabajar luego en un frontend.",
+  "description": "Algo sencillito para servir unos datos de prueba con los que trabajar luego en un frontend.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
