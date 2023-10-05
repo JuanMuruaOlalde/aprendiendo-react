@@ -266,7 +266,7 @@ root.render(
 );
 ```
 
-### **App.jsx** (el componente base sobre el que se construye la aplicacion)
+### **src/App.jsx** (el componente base sobre el que se construye la aplicacion)
 
 Por ejemplo:
 
@@ -275,12 +275,8 @@ import { useState } from "react";
 
 import { HolaMundo } from "./components/ComponentesDePrueba";
 import { Saludo } from "./components/ComponentesDePrueba";
-//nota: Las variables que un componente padre pasa a un componente hijo,
-//      es lo que se denomina "propiedades" ("props")
 
 export function App() {
-    // nota: Las variables internas de un componente,
-    //       es lo que se denomina "variables de estado" ("state")
     const [numeroDeCaso, setNumeroDeCaso] = useState(5);
     const [textoTranscendente, setTextoTranscendente] = useState("algo");
 
@@ -308,8 +304,6 @@ export function App() {
 Por ejemplo:
 
 ```
-//Los componentes React no son más que funciones que devuelven JSX
-
 export function HolaMundo() {
     return <p>Hola, mundo.</p>;
 }
@@ -344,9 +338,9 @@ Este comando crea una carpeta _nombredemiaplicacion_ con toda una estructura de 
 
 ### COMPONENTs
 
-Los componentes son funciones que devuelven código JSX (mezcla de HTML y {expresiones javascript}, para que React pueda renderizarlo en el browser cuando sea preciso.
+Los componentes son funciones que devuelven código JSX (mezcla de HTML y {expresiones javascript}), para que React pueda renderizarlo en el browser cuando sea preciso.
 
-Por ejemplo:
+Por ejemplo, un componente muy simple:
 
 ```
 export function Saludo({ nombre, apellido }) {
@@ -363,7 +357,7 @@ export function Saludo({ nombre, apellido }) {
 
 Las propiedades son información que un componente pasa a otro. (Es decir, parámetros en las funciones)
 
-Por ejemplo, podriamos usar el componente del ejemplo anterior:
+Por ejemplo, podriamos usar el componente del ejemplo anterior de esta forma:
 
 ```
     <Saludo nombre="Benzirpi" apellido="Mirvento" />
@@ -377,17 +371,19 @@ Por ejemplo:
 
 ```
     const [numeroDeCaso, setNumeroDeCaso] = useState(5);
-    // El valor inicial se pasa directamente en la llamada a useState().
-    // Posteriormente se puede actualizar llamando a setNumeroDeCaso().
 ```
+
+Para definir un estado XXXXXXX, se utiliza el "hook" useState(). Se utiliza tanto para definir la "variable de estado", como para iniciarlizar su valor inicial.
+
+Una vez definido, se utilizan llamadas a setXXXXXXX para cambiar su valor.
 
 ### HOOKs
 
-Los anzuelos son funciones especiales que permiten "interceptar" el flujo normal de información entre componentes React. Para permitir que funciones "puras" (sin efectos secundarios fuera de ellas) puedan realizar acciones "impuras" (es decir, interactuar con el entorno fuera de la función).
+Los anzuelos son funciones especiales que permiten "interceptar" el flujo normal de información entre componentes React. Esto permite que funciones "puras" (sin efectos secundarios fuera de ellas) puedan realizar acciones "impuras" (es decir, interactuar con el entorno fuera de la función).
 
 nota: En el paradigma de programación funcional. El único efecto exterior de una función ha de ser devolver un resultado. Resultado que obtendrá manipulando solamente los parámetros que recibe y el algoritmo interno que contenga; sin ninguna otra interacción con nada exterior a la función.
 
-<https://react.dev/reference/react>
+Los "hooks" disponibles son: <https://react.dev/reference/react>
 
 ### STORE, ACTIONs, REDUCER
 
