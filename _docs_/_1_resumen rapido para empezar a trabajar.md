@@ -2,24 +2,26 @@
 
 ## Resumen del resumen
 
-### para ponerse a trabajar ¡ya
+### Para ponerse a trabajar ¡ya
 
-Partir de la infraestructura base dada por el proyecto <https://create-react-app.dev/>
+Partir de la infraestructura base dada por el proyecto <https://create-react-app.dev/>. Popularmente conocido por su acrónimo: CRA
 
-- Descargar e instalar Node.js (<https://nodejs.org/es/download>)
+-   Descargar e instalar Node.js (<https://nodejs.org/es/download>)
 
-- Situarse en la carpeta donde se vaya a crear la carpeta del proyecto  
-    y ejecutar el comando `npx create-react-app nombrecarpetaproyecto`
+-   Situarse en la carpeta donde se vaya a crear la carpeta del proyecto  
+     y ejecutar el comando `npx create-react-app nombrecarpetaproyecto`
 
-### para entender un poco mejor lo que se está haciendo
+Esto, además de generar los archivos mínimos de arranque de la aplicación React, también prepara y preconfigura toda una serie de herramientas de desarrollo: Webpack, Eslint, Babel, Jest,...
+
+### Para entender un poco mejor lo que se está haciendo
 
 Preparar una infraestructura mínima manualmente:
 
-- Descargar e instalar Node.js (<https://nodejs.org/es/download>)
+-   Descargar e instalar Node.js (<https://nodejs.org/es/download>)
 
-- Crear una carpeta nueva y situarse en ella. Ejecutar el comando `npm init -yes` (para crear un archivo `package.json` básico en esa carpeta)
+-   Crear una carpeta nueva y situarse en ella. Ejecutar el comando `npm init -yes` (para crear un archivo `package.json` básico en esa carpeta)
 
-- Instalar un empaquetador. Por ejemplo: `npm install --save-dev esbuild`
+-   Instalar un empaquetador y un servidor de desarrollo. Por ejemplo: `npm install --save-dev esbuild`
 
     Y, para él, dentro del apartado "scripts" del archivo package.json, añadir estas dos lineas:
 
@@ -28,19 +30,9 @@ Preparar una infraestructura mínima manualmente:
     "build": "esbuild src/index.jsx --bundle --minify --outdir=public/js",
     ```
 
-- Instalar un linter. Por ejemplo: `npm install --save-dev eslint`
+-   Instalar los dos módulos mínimos de React: `npm install react react-dom`
 
-- Instalar una plataforma de tests unitarios. Por ejemplo `npm install --save-dev jest`
-
-    Y, para ella, dentro del apartado "scripts" del archivo package.json, añadir esta linea:
-
-    ```
-    "test": "jest"
-    ```
-
-- Instalar los dos módulos mínimos de React: `npm install react react-dom`
-
-- Crear una estructura básica de carpetas y archivos. Por ejemplo:
+-   Crear una estructura básica de carpetas y archivos. Por ejemplo:
 
 ![pantallazo estructura minima de app React](./imagenes/pantallazo%20estructura%20minima%20de%20app%20React.png)
 
@@ -60,17 +52,17 @@ Cada cual se organiza la aplicación web como le apetece. Y además React es "no
 
 Pero una serie de carpetas suelen aparecer con bastante frecuencia:
 
-- _public_ (o también suele ser _www_), para el contenido web estático.
+-   _public_ (o también suele ser _www_), para el contenido web estático.
 
     Si hay mucho contenido, se suelen contemplar algunas subcarpetas. Como por ejemplo:
 
-  - _css_ (o también suele ser _styles_), para contenido CSS.
-  - _js_ (o también suele ser _javascript_), para contenido Javascript.
-  - _img_ (o también suele ser _images_ o _assets_), para imagenes, iconos, fuentes,...
-  - _data_
-  - _pages_, para contenido HTML.
+    -   _css_ (o también suele ser _styles_), para contenido CSS.
+    -   _js_ (o también suele ser _javascript_), para contenido Javascript.
+    -   _img_ (o también suele ser _images_ o _assets_), para imagenes, iconos, fuentes,...
+    -   _data_
+    -   _pages_, para contenido HTML.
 
-- _src_, para el código fuente que genera el contenido web dinámico.
+-   _src_, para el código fuente que genera el contenido web dinámico.
 
     Salvo en aplicaciones muy pequeñas, debajo de _src_ también suele ser necesario algún tipo de estructura de subcarpetas. Por ejemplo, en apps React es típico que haya una subcarpeta _components_ y algunas otras...
 
@@ -135,11 +127,13 @@ Is this OK? (yes)
 PS C:\Users\zzz\Documents\aprendiendo-react\zz-pruebasYexperimentos>
 ```
 
-A partir de aquí, se pueden ir instalando más paquetes en nuestra aplicación.
+A partir de aquí, se pueden ir instalando más paquetes en nuestra aplicación. Utilizando el comando `npm install` (npm => Node Package Manager).
 
-Los paquetes se pueden instalar en la propia aplicación. Quedarán en una carpeta llamada `node-modules`. Esa carpeta se ha de excluir en .gitignore, ya que no merece subirla al repositorio Git (el contenido de esa carpeta se puede recuperar automáticamente simplemente tecleando el comando `npm install`).
+Los paquetes se suelen instalar en la propia aplicación. Quedarán en una carpeta llamada `node-modules`. Esa carpeta se ha de excluir en .gitignore, ya que no merece subirla al repositorio Git (El contenido de esa carpeta se puede recuperar automáticamente teniendo el archivo `package.json`. Solo hay que teclear el comando `npm install`, sin ningún parámetro más).
 
-Los paquetes también pueden instalarse de forma global (`npm install -global`). Para tenerlos disponibles en el PC y no tener que descargarlos cada vez desde el repositorio npm en Internet.
+Si se desea, algún paquete puede instalarse de forma global (`npm install -global`). Para tenerlo disponible en el PC y no tener que descargarlo cada vez desde el repositorio npm en Internet.
+
+Algunos paquetes se necesitan en tiempo de desarrollo pero no tras desplegar la aplicación en explotación. Se puede indicar este hecho con `npm install --save-dev`. Así se ahorra trabajo al empaquetador cuando prepara el despliegue.
 
 ## Una herramienta imprescindible: empaquetador y servidor web para pruebas
 
@@ -201,26 +195,28 @@ Nota: El comando `npm build`genera una carpeta _build_ con todo el contenido que
 
 ![pantallazo estructura minima de app React](./imagenes/pantallazo%20estructura%20minima%20de%20app%20React.png)
 
-- Hay que instalar como mínimo los dos paquetes base de React.
+-   Hay que instalar como mínimo los dos paquetes base de React.
 
     ```
     npm install react react-dom
     ```
 
-- Se necesita tener un transpilador que procese JSX para convertirlo en js. Por ejemplo,
+-   Se necesita tener un transpilador que procese JSX para convertirlo en js. Por ejemplo,
 
-  - esbuild lo soporta directamente.
+    -   esbuild lo soporta directamente.
         <https://esbuild.github.io/content-types/#jsx>
 
-  - parcel lo soporta directamente.
+    -   parcel lo soporta directamente.
         <https://parceljs.org/recipes/react/>
 
-  - webpack usa Babel.
+    -   webpack usa Babel.
         <https://webpack.js.org/configuration/configuration-languages/#babel-and-jsx>
 
-- Tenemos que montar nosotros mismos las carpetas y archivos base: `index.html`, `index.js` y `App.js`
+-   Tenemos que montar nosotros mismos las carpetas y archivos base: `index.html`, `index.js` y `App.js`
 
-### **public/index.html** (la página HTML de arranque)
+### **public/index.html** (la página de arranque)
+
+nota: Esta es la primera (y única) página que el cliente se descarga desde el servidor web que sirve la aplicación.
 
 ```
 <!DOCTYPE html>
@@ -245,9 +241,9 @@ Nota: El comando `npm build`genera una carpeta _build_ con todo el contenido que
 </html>
 ```
 
-Nota: Para facilitar la descarga desde el servidor web que sirve la aplicación. Se suele transpilar/empaquetar todo el códiog Javascript nuestro más el código javascript de React en un solo archivo index.js que se sirve desde la parte estática.
+nota: Para facilitar la descarga del código que acompaña a la página. Se suele transpilar/empaquetar todo nuestro código Javascript, más el código Javascript de React o de otras bibliotecas que hayamos utilizado. Generandose un solo archivo `js/index.js`, que se sirve también desde la parte estática (public) del servidor.
 
-### **src/index.jsx** (el script JS que inicia la parte dinámica)
+### **src/index.jsx** (el script de arranque)
 
 ```
 import React from "react";
@@ -266,7 +262,9 @@ root.render(
 );
 ```
 
-### **src/App.jsx** (el componente base sobre el que se construye la aplicacion)
+nota: Como se ve, la aplicación React se inyecta en el elemento previamente identificado para ello en la página HTML. A partir de ahí, el código Javascript toma el control de lo que se va mostrando en la página.
+
+### **src/App.jsx** (el componente base sobre el que se construye la aplicacion React)
 
 Por ejemplo:
 
@@ -393,12 +391,12 @@ Para hacerlo más manejable. Meta aboga por el uso del patron de arquitectura qu
 
 Por ejemplo, la biblioteca Redux se basa en ese patrón.
 
-- El estado se almacena en un Store.
+-   El estado se almacena en un Store.
 
-- Las interaciones del usuario en la Vista (pantalla) provocan que se despache (dispatch) una Acción a un Reducer.
+-   Las interaciones del usuario en la Vista (pantalla) provocan que se despache (dispatch) una Acción a un Reducer.
 
-- El Reducer notifica al Store para que actualice el estado que contiene de acuerdo a la Acción solicitada.
+-   El Reducer notifica al Store para que actualice el estado que contiene de acuerdo a la Acción solicitada.
 
-- El Store a su vez notifica a los componentes que sea preciso para que se rendericen y reflejen el nuevo estado en la pantalla.
+-   El Store a su vez notifica a los componentes que sea preciso para que se rendericen y reflejen el nuevo estado en la pantalla.
 
 ![Redux data flow](https://d33wubrfki0l68.cloudfront.net/01cc198232551a7e180f4e9e327b5ab22d9d14e7/b33f4/assets/images/reduxdataflowdiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
