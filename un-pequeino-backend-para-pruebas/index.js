@@ -6,7 +6,7 @@ const app = express();
 const port = 3001;
 
 app.get("/", (req, res) => {
-    res.send("Para usar la API, prueba con la url /api");
+    res.send("<p>Esto es solo un servidor de datos y servicios, prueba con la url <big><code>/api</code></big></p>");
 })
 
 app.get("/api", (req, res) => {
@@ -38,19 +38,19 @@ app.get("/api/albaranes/:numeroDeAlbaran", (req, res) => {
 })
 
 app.post("/api/albaranes", (req, res) => {
-    res.send("<p>La opción de crear un nuevo albarán, no está disponible todavia...");
+    res.send("<p>La opción de crear un nuevo albarán, no está disponible todavia...</p>");
 })
 
 app.patch("/api/albaranes/:numeroDeAlbaran", (req, res) => {
-    res.send("<p>La opción de añadir una linea a un albarán existente, no está disponible todavia...");
+    res.send("<p>La opción de añadir una linea a un albarán existente, no está disponible todavia...</p>");
 })
 
 app.put("/api/albaranes/:numeroDeAlbaran", (req, res) => {
-    res.send("<p>La opción de reemplazar un albarán con nuevos datos (es decir, modificar un albarán existente), no está disponible todavia...");
+    res.send("<p>La opción de reemplazar un albarán con nuevos datos (es decir, modificar un albarán existente), no está disponible todavia...</p>");
 })
 
 app.delete("/api/albaranes/:numeroDeAlbaran", (req, res) => {
-    res.send("<p>La opción de eliminar un albarán, no está disponible todavia...");
+    res.send("<p>La opción de eliminar un albarán, no está disponible todavia...</p>");
 })
 
 app.listen(port, () => {
