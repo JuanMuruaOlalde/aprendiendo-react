@@ -1,4 +1,4 @@
-[
+export const datosIniciales = [
     {
         "numeroDeAlbaran": "Alb000001-2023",
         "cliente": {
