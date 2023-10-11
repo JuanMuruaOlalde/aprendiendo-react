@@ -1,6 +1,6 @@
-export function getUltimosAlbaranes() {
+export function llamarALaAPIdeAlbaranesParaRecuperarDatos(url) {
     return new Promise ((resolve, reject) => {
-        fetch("/api/albaranes",
+        fetch(url,
         {
             headers: {
                 "accepts": "application/json"
@@ -21,4 +21,16 @@ export function getUltimosAlbaranes() {
             resolve(datos);
         });
      });
+}
+
+export function getUltimosAlbaranes() {
+    return llamarALaAPIdeAlbaranesParaRecuperarDatos("/api/albaranes");
+}
+
+export function getAlbaran(numeroDeAlbaran) {
+    if(!numeroDeAlbaran || numeroDeAlbaran === "") {
+        throw(new Error("No se puede buscar un albaran sin indicar su número."));
+    } else {
+        return llamarALaAPIdeAlbaranesParaRecuperarDatos("/api/albaranes/" + numeroDeAlbaran);
+    }
 }

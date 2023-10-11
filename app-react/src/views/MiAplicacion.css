@@ -24,8 +24,10 @@ header {
 
 
 nav {
-    margin-bottom: 30px;
+    margin-top: 2em;
+    margin-bottom: 4em;
     line-height: 0;
+    justify-content: left;
 }
 
 nav li {
@@ -34,6 +36,7 @@ nav li {
 }
 
 nav button {
+    display: flex;
     padding: 7px;
     border: 2px solid grey;
     border-radius: 2px;
@@ -53,6 +56,10 @@ h3 {
     margin-top: 2em;
 }
 
+button {
+    font-size: unset;
+}
+
 img {
     width: 100%;
     height: auto;
@@ -65,7 +72,8 @@ aside.fit img {
 }
 
 form {
-    display: inline-block;
+    display: flex;
+    justify-content: left;
 }
 
 .enmarcado_dentro_de_una_caja {
@@ -76,12 +84,9 @@ form {
     box-shadow: 2px 2px green;
 }
 
-input[type="submit"],
-input[type="button"],
-button[type="submit"] {
+.error {
     margin: 1em;
-    padding: 0.5em;
-    background-color: oldlace;
+    color: crimson;
 }
 
 footer {
