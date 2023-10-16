@@ -1,4 +1,4 @@
-# Resumen rápido para empezar a trabajar con Node.js y React
+# Notas adiccionales al resumen rápido para empezar a trabajar con Node.js y React
 
 ## Un poco de nomenclatura, estructura de carpetas
 
@@ -6,17 +6,17 @@ Cada cual se organiza la aplicación web como le apetece. Y además React es "no
 
 Pero una serie de carpetas suelen aparecer con bastante frecuencia:
 
--   _public_ (o también suele ser _www_), para el contenido web estático.
+- _public_ (o también suele ser _www_), para el contenido web estático.
 
     Si hay mucho contenido, se suelen contemplar algunas subcarpetas. Como por ejemplo:
 
-    -   _css_ (o también suele ser _styles_), para contenido CSS.
-    -   _js_ (o también suele ser _javascript_), para contenido Javascript.
-    -   _img_ (o también suele ser _images_ o _assets_), para imagenes, iconos, fuentes,...
-    -   _data_
-    -   _pages_, para contenido HTML.
+  - _css_ (o también suele ser _styles_), para contenido CSS.
+  - _js_ (o también suele ser _javascript_), para contenido Javascript.
+  - _img_ (o también suele ser _images_ o _assets_), para imagenes, iconos, fuentes,...
+  - _data_
+  - _pages_, para contenido HTML.
 
--   _src_, para el código fuente que genera el contenido web dinámico.
+- _src_, para el código fuente que genera el contenido web dinámico.
 
     Salvo en aplicaciones muy pequeñas, debajo de _src_ también suele ser necesario algún tipo de estructura de subcarpetas. Por ejemplo, en apps React es típico que haya una subcarpeta _components_ y algunas otras...
 
@@ -145,7 +145,7 @@ Nota: El comando `npm build`genera una carpeta _build_ con todo el contenido que
 
 -pendiente- escribir este apartado.
 
-### nota:
+### nota
 
 Para trabajar con React se necesita tener un transpilador que procese código JSX para convertirlo en código JS Por ejemplo,
 
@@ -157,3 +157,15 @@ Para trabajar con React se necesita tener un transpilador que procese código JS
 
     -   webpack usa Babel.
         <https://webpack.js.org/configuration/configuration-languages/#babel-and-jsx>
+
+## Alternativas a create-react-app
+
+Además del marco de trabajo canónico preconizado por el propio Meta (<https://create-react-app.dev/docs/getting-started>). Existen también otros marcos desarrollados por la comunidad.
+
+Por ejemplo:
+
+- Next (<https://nextjs.org/docs>)
+
+- Gatsby (<https://www.gatsbyjs.com/docs/>)
+
+- Remix (<https://remix.run/docs/en/main/discussion/introduction>)
