@@ -1,6 +1,7 @@
 import express from "express";
 
 import {getUltimosAlbaranes, getAlbaran} from "./data/manejoDeAlbaranes.js";
+import { getCoordenadas, getMetereologia } from "./services/relayDeConsultasMetereologicas.js";
 
 const app = express();
 const port = 3001;
@@ -17,6 +18,7 @@ app.get("/api", (req, res) => {
         "<ul>" +
         "  <li>GET /api/albaranes : da los últimos albaranes introducidos al sistema.</li>" +
         "  <li>GET /api/albaranes/numeroDeAlbaran : da el albarán solicitado.</li>" +
+        "  <li>GET /api/metereologia?poblacion=XXXXXX&pais=YY : da la situación metereologica actual en la zona indicada.</li>" +
         "</ul>" +
         "<br/><br/><br/>" +
         "<p> Y una lista de los que aún no están disponibles, pero que es posible que en un futuro estén:</p>" +
@@ -51,6 +53,23 @@ app.put("/api/albaranes/:numeroDeAlbaran", (req, res) => {
 
 app.delete("/api/albaranes/:numeroDeAlbaran", (req, res) => {
     res.send("<p>La opción de eliminar un albarán, no está disponible todavia...</p>");
+})
+
+app.get("/api/metereologia", (req, res) => {
+    getCoordenadas(req.query.poblacion,req.query.pais)
+    .then( (coordenadas) => {
+        let {latitud, longitud} = coordenadas;
+        getMetereologia(latitud, longitud)
+        .then( (datosMetereologicos) => {
+            res.json(JSON.stringify(datosMetereologicos));
+        })
+        .catch( (error) => {
+            res.send("ERROR en metereologia: " + error);
+        })
+    })
+    .catch( (error) => {
+        res.send("ERROR en coordenadas: " + error);
+    })
 })
 
 app.listen(port, () => {

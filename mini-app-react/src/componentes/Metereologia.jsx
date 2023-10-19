@@ -1,96 +1,28 @@
 import { useState } from "react";
 
-// ¡IMPORTANTE! En los frontends que se ejecutan en la parte cliente no es posible guardar secretos.
-//              El usuario no tiene más que ir a "Inspeccionar" en su browser para ver el código que se ejecuta.
-//              Es decir, es imposible ocultarle las llamadas que se hagan a cualquier API externa.
-//
-// Si se desea mantener claves o tokens en secreto, es necesario que las llamadas con secretos se hagan
-// desde un servidor que controlemos nosotros. Es decir: el cliente hace una petición a nuestro servidor;
-// nuestro servidor hace la llamada a la API externa; y devuelve al cliente el resultado de esta.
-//
-// La forma de trabajar que se ve aquí solo es válida en un ejercicio de práctica...
-// No usar nunca en producción con nada que involucre secretos...
-let CONFIGURACION;
-fetch("./configuracion.json")
-    .then((response) => {
-        if (!response.ok) {
-            alert("No se ha podido leer la configuracion:\n" + response.status + " " + response.statusText);
-        }
-        return response.json();
-    })
-    .then((jsonData) => {
-        CONFIGURACION = jsonData;
-    })
-    .catch((error) => alert("Se ha producido un error al procesar la configuracion:\n" + error.message));
-
-function getCoordenadas(poblacion, codigoPais) {
+function getDatosMetereologicos(poblacion, codigoPais) {
     return new Promise((resolve) => {
-        const urlParaGeocodificacion =
-            "http://api.openweathermap.org/geo/1.0/direct" +
-            "?q=" +
-            poblacion +
-            "," +
-            codigoPais +
-            "&appid=" +
-            CONFIGURACION["weatherAPIkey"];
-        fetch(urlParaGeocodificacion)
+        // Estamos usando 'un-pequeino-backend-para-pruebas' de forma local, 
+        // en una aplicacion real tendriamos que ponerlo en un servidor propio en nuestro dominio.
+        fetch("http://localhost:3001/api/metereologia" +
+              "?poblacion=" + poblacion +
+              "&pais=" + codigoPais)
             .then((response) => {
                 if (!response.ok) {
-                    alert(
-                        "No se ha podido obtener datos de la API de geolocalización:\n" +
-                            response.status +
-                            " " +
-                            response.statusText
-                    );
+                    alert("No se ha podido obtener datos metereologicos:\n" + response.status + " " + response.statusText);
                 }
                 return response.json();
             })
             .then((jsonData) => {
-                //const timestamp = new Date(Date.now());
-                //console.log(timestamp.toISOString(), "Se ha geolocalizado ", JSON.stringify(jsonData));
-                if (jsonData.length === 1) {
-                    const latitud = jsonData[0]["lat"];
-                    const longitud = jsonData[0]["lon"];
-                    resolve({latitud, longitud});
-                } else {
-                    resolve(jsonData);
-                }
-            })
-            .catch((error) => alert("Se ha producido un error en la API de geolocalización:\n" + error.message));
-    });
-}
-
-function getMetereologia(latitud, longitud) {
-    return new Promise((resolve) => {
-        const urlParaMetereologia =
-            "https://api.openweathermap.org/data/2.5/weather?lat=" +
-            latitud +
-            "&lon=" +
-            longitud +
-            "&units=metric" +
-            "&lang=es" +
-            "&appid=" +
-            CONFIGURACION["weatherAPIkey"];
-        fetch(urlParaMetereologia)
-            .then((response) => {
-                if (!response.ok) {
-                    alert("No se ha podido obtener datos de la API metereologica:\n" + response.status + " " + response.statusText);
-                }
-                return response.json();
-            })
-            .then((jsonData) => {
-                //const timestamp = new Date(Date.now());
-                //console.log(timestamp.toISOString(), "Se ha obtenido metereologia ", JSON.stringify(jsonData));
-                const temperaturaActual = jsonData["main"]["temp"];
-                const humedadActual = jsonData["main"]["humidity"];
-                const vientoVelocidad = jsonData["wind"]["speed"];
-                const vientoDireccion = jsonData["wind"]["deg"];
-                const salidaDelSol = new Date(jsonData["sys"]["sunrise"]);
-                const puestaDelSol = new Date(jsonData["sys"]["sunset"]);
-                //Me salian valores raros en las horas de salida y puesta del Sol, asi es que no las uso.
+                const timestamp = new Date(Date.now());
+                console.log(timestamp.toISOString(), "Se ha obtenido metereologia ", JSON.stringify(jsonData));
+                const temperaturaActual = jsonData["temperaturaActual"];
+                const humedadActual = jsonData["humedadActual"];
+                const vientoVelocidad = jsonData["vientoVelocidad"];
+                const vientoDireccion = jsonData["vientoDireccion"];
                 resolve({temperaturaActual, humedadActual, vientoVelocidad, vientoDireccion});
             })
-            .catch((error) => alert("Se ha producido un error en la API metereologica:\n" + error.message));
+            .catch((error) => alert("Se ha producido un error al consultar datos metereologicos:\n" + error.message));
     });
 }
 
@@ -117,18 +49,12 @@ export function Metereologia() {
     }
 
     async function buscarDatosMetereologicos() {
-        getCoordenadas(formData.poblacion, formData.codigoPais)
-        .then((coordenadasObtenidas) => {
-            //console.log("Tengo coordenadas!!", coordenadasObtenidas);
-            setCoordenadas(coordenadasObtenidas);
-            getMetereologia(coordenadasObtenidas.latitud, coordenadasObtenidas.longitud)
-            .then((metereologiaObtenida) => {
-                //console.log("Tengo metereologia!!", metereologiaObtenida)
+        getDatosMetereologicos(formData.poblacion, formData.codigoPais)
+        .then( (metereologiaObtenida) => {
+                console.log("Tengo metereologia!!", metereologiaObtenida)
                 setMetereologia(metereologiaObtenida);
             })
-            .catch((error) => alert("Se ha producido un error al buscar metereologia:\n" + error.message));
-        })
-        .catch((error) => alert("Se ha producido un error al buscar coordenadas:\n" + error.message));
+        .catch((error) => alert("Se ha producido un error al buscar metereologia:\n" + error.message));
     }
 
    
@@ -205,3 +131,116 @@ export function Metereologia() {
     )
 
 }
+
+
+
+// ¡IMPORTANTE! En los frontends que se ejecutan en la parte cliente no es posible guardar secretos.
+//              El usuario no tiene más que ir a "Inspeccionar" en su browser para ver el código que se ejecuta.
+//              Es decir, es imposible ocultarle las llamadas que se hagan a cualquier API externa.
+//
+// Si se desea mantener claves o tokens en secreto, es necesario que las llamadas con secretos se hagan
+// desde un servidor que controlemos nosotros. Es decir: el cliente hace una petición a nuestro servidor;
+// nuestro servidor hace la llamada a la API externa; y devuelve al cliente el resultado de esta.
+//
+// La forma de trabajar que se ve aquí comentada solo es válida en un ejercicio de práctica...
+// No usar nunca en producción con nada que involucre secretos...
+//
+// let CONFIGURACION;
+// fetch("./configuracion.json")
+//     .then((response) => {
+//         if (!response.ok) {
+//             alert("No se ha podido leer la configuracion:\n" + response.status + " " + response.statusText);
+//         }
+//         return response.json();
+//     })
+//     .then((jsonData) => {
+//         CONFIGURACION = jsonData;
+//     })
+//     .catch((error) => alert("Se ha producido un error al procesar la configuracion:\n" + error.message));
+//
+// function getCoordenadas(poblacion, codigoPais) {
+//     return new Promise((resolve) => {
+//         const urlParaGeocodificacion =
+//             "http://api.openweathermap.org/geo/1.0/direct" +
+//             "?q=" +
+//             poblacion +
+//             "," +
+//             codigoPais +
+//             "&appid=" +
+//             CONFIGURACION["weatherAPIkey"];
+//         fetch(urlParaGeocodificacion)
+//             .then((response) => {
+//                 if (!response.ok) {
+//                     alert(
+//                         "No se ha podido obtener datos de la API de geolocalización:\n" +
+//                             response.status +
+//                             " " +
+//                             response.statusText
+//                     );
+//                 }
+//                 return response.json();
+//             })
+//             .then((jsonData) => {
+//                 //const timestamp = new Date(Date.now());
+//                 //console.log(timestamp.toISOString(), "Se ha geolocalizado ", JSON.stringify(jsonData));
+//                 if (jsonData.length === 1) {
+//                     const latitud = jsonData[0]["lat"];
+//                     const longitud = jsonData[0]["lon"];
+//                     resolve({latitud, longitud});
+//                 } else {
+//                     resolve(jsonData);
+//                 }
+//             })
+//             .catch((error) => alert("Se ha producido un error en la API de geolocalización:\n" + error.message));
+//     });
+// }
+//
+// function getMetereologia(latitud, longitud) {
+//     return new Promise((resolve) => {
+//         const urlParaMetereologia =
+//             "https://api.openweathermap.org/data/2.5/weather?lat=" +
+//             latitud +
+//             "&lon=" +
+//             longitud +
+//             "&units=metric" +
+//             "&lang=es" +
+//             "&appid=" +
+//             CONFIGURACION["weatherAPIkey"];
+//         fetch(urlParaMetereologia)
+//             .then((response) => {
+//                 if (!response.ok) {
+//                     alert("No se ha podido obtener datos de la API metereologica:\n" + response.status + " " + response.statusText);
+//                 }
+//                 return response.json();
+//             })
+//             .then((jsonData) => {
+//                 //const timestamp = new Date(Date.now());
+//                 //console.log(timestamp.toISOString(), "Se ha obtenido metereologia ", JSON.stringify(jsonData));
+//                 const temperaturaActual = jsonData["main"]["temp"];
+//                 const humedadActual = jsonData["main"]["humidity"];
+//                 const vientoVelocidad = jsonData["wind"]["speed"];
+//                 const vientoDireccion = jsonData["wind"]["deg"];
+//                 const salidaDelSol = new Date(jsonData["sys"]["sunrise"]);
+//                 const puestaDelSol = new Date(jsonData["sys"]["sunset"]);
+//                 //Me salian valores raros en las horas de salida y puesta del Sol, asi es que no las uso.
+//                 resolve({temperaturaActual, humedadActual, vientoVelocidad, vientoDireccion});
+//             })
+//             .catch((error) => alert("Se ha producido un error en la API metereologica:\n" + error.message));
+//     });
+// }
+//
+// async function buscarDatosMetereologicos() {
+//     getCoordenadas(formData.poblacion, formData.codigoPais)
+//     .then((coordenadasObtenidas) => {
+//         //console.log("Tengo coordenadas!!", coordenadasObtenidas);
+//         setCoordenadas(coordenadasObtenidas);
+//         getMetereologia(coordenadasObtenidas.latitud, coordenadasObtenidas.longitud)
+//         .then((metereologiaObtenida) => {
+//             //console.log("Tengo metereologia!!", metereologiaObtenida)
+//             setMetereologia(metereologiaObtenida);
+//         })
+//     })
+//     .catch((error) => alert("Se ha producido un error al buscar metereologia:\n" + error.message));
+// }
+
+
