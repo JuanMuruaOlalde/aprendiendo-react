@@ -1,5 +1,15 @@
 import { useState } from "react";
 
+// ¡IMPORTANTE! En los frontends que se ejecutan en la parte cliente no es posible guardar secretos.
+//              El usuario no tiene más que ir a "Inspeccionar" en su browser para ver el código que se ejecuta.
+//              Es decir, es imposible ocultarle las llamadas que se hagan a cualquier API externa.
+//
+// Si se desea mantener claves o tokens en secreto, es necesario que las llamadas con secretos se hagan
+// desde un servidor que controlemos nosotros. Es decir: el cliente hace una petición a nuestro servidor;
+// nuestro servidor hace la llamada a la API externa; y devuelve al cliente el resultado de esta.
+//
+// La forma de trabajar que se ve aquí solo es válida en un ejercicio de práctica...
+// No usar nunca en producción con nada que involucre secretos...
 let CONFIGURACION;
 fetch("./configuracion.json")
     .then((response) => {
