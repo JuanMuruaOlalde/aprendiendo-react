@@ -8,6 +8,8 @@ import { Pizzas } from './componentes/Pizzas'
 import { Metereologia } from './componentes/Metereologia'
 import { PieDePaginaConEnlacesDeUtilidad } from './componentes/PieDePagina'
 
+import imagenDeUnaCasita from './recursos/icons8-home-page-64.png'
+
 export default function App() {
 
     const [paginaAMostrar, setPaginaAMostrar] = useState("primerapagina");
@@ -16,7 +18,7 @@ export default function App() {
         return (
             <button type="button" onClick={() => setPaginaAMostrar("primerapagina")}>
                 <img
-                    src="images/icons8-home-page-64.png"
+                    src={imagenDeUnaCasita}
                     alt="Home icon, icono de casita"
                     width="32"
                     height="32"
