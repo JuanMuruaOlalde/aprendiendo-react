@@ -4,8 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "esbuild src/index.jsx --bundle --servedir=public/ --outdir=public/js",
-        "build": "esbuild src/index.jsx --bundle --minify --outdir=public/js",
+        "start": "esbuild src/index.js --bundle --servedir=public/ --outdir=public/js --loader:.js=jsx --loader:.png=dataurl --loader:.jpg=dataurl",
+        "build": "esbuild src/index.js --bundle --minify --outdir=build --loader:.js=jsx --loader:.png=dataurl --loader:.jpg=dataurl",
         "test": "jest"
     },
     "keywords": [],

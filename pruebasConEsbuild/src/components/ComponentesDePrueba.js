@@ -1,10 +1,7 @@
 //Los componentes React no son más que funciones que devuelven JSX
 
-export function HolaMundo() {
-    return <p>Hola, mundo.</p>;
-}
-
 export function Saludo({ nombre, apellido }) {
+    // Los dos parámetros recibidos es lo que se denominan "propiedades" ("props")
     return (
         <>
             <p>Buenos dias, {nombre}.</p>
