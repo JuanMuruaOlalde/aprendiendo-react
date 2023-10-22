@@ -1,0 +1,19 @@
+{
+    "name": "pruebasconparcel",
+    "version": "1.1.p1.c1",
+    "description": "",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "parcel ./src/index.html",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.24.1",
+        "eslint": "^8.52.0",
+        "parcel-bundler": "^1.12.5"
+    }
+}
