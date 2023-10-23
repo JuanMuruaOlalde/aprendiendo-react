@@ -69,15 +69,13 @@ nota: Las preguntas se pueden omitir (y se usarán valores por defecto al crear 
 
 A partir de aquí, Node permite ir instalando paquetes en el proyecto. Para ello, se utiliza el comando `npm install  nombredelpaquete`. Cada paquete instalado queda registrado en el archivo `package.json`.
 
-Hay un par de parámetros importantes:
+Una copia local de ese paquete (más de sus dependencias) queda en la carpeta `node-modules` dentro del proyecto.
 
-- Si el paquete se usa solo en desarrollo pero no en producción: `npm install --save-dev  nombredelpaquete`. Así  no se incluirá en la imagen final para desplegar en producción.
+El contenido de esa carpeta `node-modules` no se debe subir al repositorio Git. Es decir, se ha de excluir en `.gitignore`. Se puede recuperar automáticamente. Lanzando el comando `npm install`, sin ningún parámetro. Node volverá a (re)crear toda la carpeta `node-modules` para ese proyecto, con todos los módulos citados en su archivo `package.json`.
 
-- Si es un paquete que vamos a utilizar en muchos proyectos diferentes: `npm install --global  nombredelpaquete`. Así está disponible en el PC y no se descargará desde Internet cada vez que se incluya en cada proyecto. (Seguimos teniendo que lanzar `npm install  nombredelpaquete` en cada proyecto, pero cada instalación individual será más rápida.)
+nota: Si el paquete se va a usar solo en desarrollo pero no en producción, instalarlo con el parámetro --save-dev: `npm install --save-dev  nombredelpaquete`. Así se podrá utilizar cuando se está trabajando en el proyecto; pero no se incluirá en la imagen final para desplegar en producción.
 
-En la carpeta `node-modules` se guarda una copia local de los paquetes instalados (más sus dependencias).
-
-El contenido de esa carpeta no se sube al repositorio Git. Es decir, se ha de excluir en `.gitignore`. Ya que se puede recuperar automáticamente. Lanzando el comando `npm install`, sin ningún parámetro. Node volverá a (re)crear toda la carpeta `node-modules` para ese proyecto, con todos los módulos citados en su archivo `package.json`.
+nota: Si el paquete se va a usar habitualmente en cualquier línea de comandos o cualquier IDE, instalarlo con el parámetro --global: `npm install --global  nombredelpaquete`. Así quedará disponible globalmente en el equipo, en cualquier terminal o línea de comandos; y no solamente en un proyecto concreto.
 
 ## Un paquete imprescindible: empaquetador (bundler)
 
