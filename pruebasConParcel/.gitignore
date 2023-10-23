@@ -17,6 +17,8 @@ configuracion.json
 # production
 /dist
 /.cache
+/.parcel-cache
+/build
 
 # misc
 .DS_Store
