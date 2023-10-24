@@ -329,7 +329,7 @@ Se instala con el comando:
 npm install --save-dev jest
 ```
 
-y luego en el archivo package.json, añadir:
+y luego en el archivo package.json, modificar:
 
 ```
     "scripts": {
@@ -342,6 +342,22 @@ y luego en el archivo package.json, añadir:
 Tal cual, Jest permite escribir **tests unitarios** (comprobar cada función o pequeña funcionalidad concreta dentro del código). <https://jestjs.io/docs/getting-started>
 
 Pero, para escribir **tests end-to-end** (comprobar funcionalidades completas, incluyendo la interacción con el interfaz gráfica de usuario), suele ser conveniente añadir algún que otro paquete específico para ello. Como por ejemplo: <https://github.com/argos-ci/jest-puppeteer>
+
+nota: configuración adicional: Para usar módulos ES6 (sentencias `import`) en los test, es necesario que Babel ayude a Jest.
+
+Lanzar el comando:
+
+```
+npm install --save-dev babel-jest @babel/core @babel/preset-env
+```
+
+Crear un archivo `babel.config.js` que contenga:
+
+```
+module.exports = {
+  presets: [['@babel/preset-env', {targets: {node: 'current'}}]],
+};
+```
 
 ### nota: si se está trabajando con React
 
