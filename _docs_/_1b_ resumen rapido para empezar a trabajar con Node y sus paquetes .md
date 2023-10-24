@@ -363,6 +363,8 @@ module.exports = {
 
 <https://jestjs.io/docs/tutorial-react>
 
+<https://enzymejs.github.io/enzyme/>
+
 ## Más paquetes
 
 Lo dicho, la comunidad Javascript es muy vasta y dinámica. Unos botones de muestra:
