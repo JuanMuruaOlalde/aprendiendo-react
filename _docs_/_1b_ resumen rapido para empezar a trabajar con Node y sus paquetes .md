@@ -77,6 +77,14 @@ nota: Si el paquete se va a usar solo en desarrollo pero no en producción, inst
 
 nota: Si el paquete se va a usar habitualmente en cualquier línea de comandos o cualquier IDE, instalarlo con el parámetro --global: `npm install --global  nombredelpaquete`. Así quedará disponible globalmente en el equipo, en cualquier terminal o línea de comandos; y no solamente en un proyecto concreto.
 
+### Aviso
+
+Los paquetes citados de aquí en adelante son algunos de los más utilizados a día de hoy (2023).
+
+Pero el universo Javascript es muy rico y existen multitud de paquetes para realizar una determinada tarea. Hay mucho donde escoger, cada cual puede utilizar los que le parezcan más adecuados para su proyecto en cada momento.
+
+Además es un universo muy dinámico, donde las cosas cambian mucho en cuestión de unos pocos años (o meses !). Así que es imprescindible participar en la comunidad y estar al tanto de lo que se está cociendo.
+
 ## Un paquete imprescindible: empaquetador (bundler)
 
 Un empaquetador, entre otras tareas, se encarga de:
@@ -196,7 +204,7 @@ añadir:
 
 -pendiente- comprobar que eso es así y que funciona.
 
-### nota: si se va a trabajar con React
+### nota: si se está trabajando con React
 
 React necesita contar con un transpilador para procesar el código JSX y convertirlo en código JS. Esta es una tarea que también desempeñan los empaquetadores. Por ejemplo,
 
@@ -220,7 +228,7 @@ nota:  Babel es un transpilador Javascript que realiza muchas otras tareas adem�
 
 ## Un paquete muy útil: comprobador estático (linter)
 
-Un linter se encarga de revisar el código y nos avisa sobre las partes de código mal escritas o que pueden ser problematicas.
+Un linter se encarga de revisar el código y nos avisa sobre las partes de código con errores o que podrian ser problematicas.
 
 ### eslint
 
@@ -228,17 +236,52 @@ Un linter se encarga de revisar el código y nos avisa sobre las partes de códi
 
 <https://www.npmjs.com/package/eslint>
 
-Se instala con el comando:
+Se instala y se configura con el comando:
 
 ```
-npm install --save-dev eslint
+npm init @eslint/config
 ```
+
+Irá haciendo una serie de preguntas, a la par que instalando los paquetes necesarios.
+
+```
+√ How would you like to use ESLint? · problems
+√ What type of modules does your project use? · esm
+√ Which framework does your project use? · none
+√ Does your project use TypeScript? · No 
+√ Where does your code run? · browser
+√ What format do you want your config file to be in? · JavaScript
+Local ESLint installation not found.
+The config that you've selected requires the following dependencies:
+eslint@latest
+√ Would you like to install them now? · Yes
+√ Which package manager do you want to use? · npm
+Installing eslint@latest
+added 83 packages, and audited 291 packages in 1m
+Successfully created .eslintrc.js file in C:\Users\xxxxx\Documents\pruebasYexperimentos
+```
+
+Una vez instalado,
+
+- Se puede utilizar desde la línea de comandos.
+
+  Por ejemplo, para revisar todos los archivos en la carpeta src:
+
+  ```
+  npx eslint src/**
+  ```
+
+- O se puede configurar el IDE para usarlo según escribimos código.
+
+  Por ejemplo, en Visual Studio Code se suele instalar la extensión <https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint>
 
 ## Un paquete muy conveniente: formateador
 
-Un formateador nos evita discusiones sobre las normas de estilo. Ya que reescribe nuestros archivos para homogeneizar su estilo y que todos queden según esté configurado en el formateador.
+Un formateador nos evita discusiones sobre normas de estilo. Reescribe nuestros archivos para homogeneizar su estilo y que la apariencia de todos los ellos sea según esté configurada en el formateador.
 
-### prettier
+Siempre queda la discusión sobre cómo configurar el formateador... ;-) Pero eso se puede arreglar aceptando tal cual la configuración que trae de fábrica...
+
+### Prettier
 
 <https://prettier.io/>
 
@@ -249,3 +292,82 @@ Se instala con el comando:
 ```
 npm install --save-dev prettier
 ```
+
+Una vez instalado,
+
+- Se puede utilizar desde la línea de comandos.
+
+  ```
+  npx prettier . --write
+  ```
+
+- O se puede configurar el IDE para usarlo.
+
+  Por ejemplo, en Visual Studio Code se suele instalar la extensión <https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode>
+
+  Además se ha de indicar a VSCode que utilice Prettier como formateador por defecto: ir al menú 'File' 'Preferences' 'Settings'  (o pulsar las teclas [ctrl][,]) ; escribir "format" en 'search settings' ; y ajustar las opciones 'Editor: Default Formatter' , 'Editor: Format On Save' , etc.
+
+El comportamiento de Prettier se puede modificar creando dos archivos en la raiz de la carpeta de proyecto:
+
+- `.prettierrc` para configurar. (<https://prettier.io/docs/en/configuration>)
+
+- `.prettierignore` para indicar archivos que no se deben formatear.
+
+nota: En lugar de usar el archivo específico `.prettierrc`. También se puede escribir la configuración directamente  dentro del archivo `package.json` , usando la clave "prettier": { }
+
+## Otro paquete imprescindible: marco de ejecución de tests
+
+Los test son la red de seguridad que nos permite avanzar con confianza. Avisandonos de elementos que hayamos podido estropear cuando estamos añadiendo la siguiente funcionalidad para ampliar el código o cuando estamos refactorizando lo ya hecho para mantener el código limpio.
+
+### Jest
+
+<https://jestjs.io/>
+
+Se instala con el comando:
+
+```
+npm install --save-dev jest
+```
+
+y luego en el archivo package.json, añadir:
+
+```
+    "scripts": {
+        "test": "jest"
+
+
+    },
+```
+
+Tal cual, Jest permite escribir **tests unitarios** (comprobar cada función o pequeña funcionalidad concreta dentro del código). <https://jestjs.io/docs/getting-started>
+
+Pero, para escribir **tests end-to-end** (comprobar funcionalidades completas, incluyendo la interacción con el interfaz gráfica de usuario), suele ser conveniente añadir algún que otro paquete específico para ello. Como por ejemplo: <https://github.com/argos-ci/jest-puppeteer>
+
+### nota: si se está trabajando con React
+
+<https://jestjs.io/docs/tutorial-react>
+
+## Más paquetes
+
+Lo dicho, la comunidad Javascript es muy vasta y dinámica. Unos botones de muestra:
+
+![pantallazo biblioteca npm](./imagenes/pantallazo%20biblioteca%20npm.png)
+
+<https://www.npmjs.com/search?q=bundler>
+<https://www.npmjs.com/search?q=linter>
+<https://www.npmjs.com/search?q=formatter>
+<https://www.npmjs.com/search?q=test>
+<https://www.npmjs.com/search?q=testing>
+
+<https://www.npmjs.com/search?q=responsive>
+<https://www.npmjs.com/search?q=db>
+<https://www.npmjs.com/search?q=math>
+<https://www.npmjs.com/search?q=iot>
+<https://www.npmjs.com/search?q=image>
+<https://www.npmjs.com/search?q=video>
+<https://www.npmjs.com/search?q=sound>
+<https://www.npmjs.com/search?q=3d>
+
+<https://github.com/topics/javascript>
+
+etc, etc.
