@@ -372,18 +372,29 @@ Lo dicho, la comunidad Javascript es muy vasta y dinámica. Unos botones de mues
 ![pantallazo biblioteca npm](./imagenes/pantallazo%20biblioteca%20npm.png)
 
 <https://www.npmjs.com/search?q=bundler>
+
 <https://www.npmjs.com/search?q=linter>
+
 <https://www.npmjs.com/search?q=formatter>
+
 <https://www.npmjs.com/search?q=test>
+
 <https://www.npmjs.com/search?q=testing>
 
 <https://www.npmjs.com/search?q=responsive>
+
 <https://www.npmjs.com/search?q=db>
+
 <https://www.npmjs.com/search?q=math>
+
 <https://www.npmjs.com/search?q=iot>
+
 <https://www.npmjs.com/search?q=image>
+
 <https://www.npmjs.com/search?q=video>
+
 <https://www.npmjs.com/search?q=sound>
+
 <https://www.npmjs.com/search?q=3d>
 
 <https://github.com/topics/javascript>
