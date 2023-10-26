@@ -1,10 +1,78 @@
 # Resumen rápido para empezar a trabajar con Node.js y React
 
-## Para ponerse a trabajar ¡ya
+## Para ponerse a trabajar ¡ya!, enseguida
 
-Partir de la infraestructura base de alguien. Por ejemplo la canónica de Meta, el proyecto CRA: <https://create-react-app.dev/>
+<https://react.dev/learn/start-a-new-react-project>
 
-Para ello:
+### Next.js
+
+Por ejemplo, para empezar con el marco de trabajo Next, solo hay que seguir dos pasos:
+
+- Descargar e instalar Node.js (<https://nodejs.org/es/download>)
+
+- Situarse en la carpeta donde se vaya a crear la carpeta del proyecto  
+     y ejecutar el comando `npx create-next-app@latest`
+
+Tras una serie de preguntas:
+
+```
+Need to install the following packages:
+  create-next-app@13.5.6
+Ok to proceed? (y)
+√ What is your project named? ... app-next-react
+√ Would you like to use TypeScript? ... No / Yes
+√ Would you like to use ESLint? ... No / Yes
+√ Would you like to use Tailwind CSS? ... No / Yes
+√ Would you like to use `src/` directory? ... No / Yes
+√ Would you like to use App Router? (recommended) ... No / Yes
+√ Would you like to customize the default import alias (@/*)? ... No / Yes     
+Creating a new Next.js app in C:\Users\XXXX\Documents\aprendiendo-react\app-next-react\app-next-react.
+Using npm.
+Initializing project with template: app
+Installing dependencies:
+- react
+- react-dom
+- next
+Installing devDependencies:
+- eslint
+- eslint-config-next
+added 275 packages, and audited 276 packages in 1m
+106 packages are looking for funding
+  run `npm fund` for details
+found 0 vulnerabilities
+Success! Created app-next-react at C:\Users\XXXX\Documents\aprendiendo-react\app-next-react\app-next-react
+```
+
+Se generan una serie de archivos básicos para una aplicación React. Además de preparar y preconfigurar toda una serie de herramientas de desarrollo: Eslint, ...
+
+![pantallazo estructura inicial de create-next-app](./imagenes/pantallazo%20estructura%20inicial%20de%20create-next-app.png)
+
+<https://nextjs.org/docs>
+
+### Remix.js
+
+Por ejemplo, para empezar con el marco de trabajo Remix, solo hay que seguir estos pasos:
+
+- Descargar e instalar Node.js (<https://nodejs.org/es/download>)
+
+- Situarse en la carpeta donde se vaya a crear la carpeta del proyecto  
+     y ejecutar los comandos
+  - `npm install @remix-run/node @remix-run/react @remix-run/serve isbot react react-dom`
+  - `npm install --save-dev @remix-run/dev`
+
+Esto prepara toda una serie de herramientas de desarrollo: esbuild, Babel, Prettier,... Luego tenemos que comenzar a crear archivos...
+
+![pantallazo estructura inicial de create-remix-app](./imagenes/pantallazo%20estructura%20inicial%20de%20create-remix-app.png)
+
+<https://remix.run/docs/en/main>
+
+### CRA (create-react-app) esta deprecated
+
+En estos momentos se tiende a usar frameworks como los citados anteriormente. Pero hasta hace poco se utilizaba como punto de partida la base propuesta por Meta, el proyecto CRA: <https://create-react-app.dev/>
+
+Para una explicación detallada de la evolución, leer el apartado "Can I use React without a framework?", al final de la página <https://react.dev/learn/start-a-new-react-project>
+
+Si aún tienes interés en comenzar un proyecto con CRA:
 
 - Descargar e instalar Node.js (<https://nodejs.org/es/download>)
 
@@ -23,20 +91,38 @@ Preparar una infraestructura mínima manualmente:
 
 - Crear una carpeta de proyectgo y situarse en ella. Ejecutar el comando `npm init -yes` (para crear un archivo `package.json` básico en esa carpeta)
 
-- Instalar un empaquetador y un servidor de desarrollo. Por ejemplo: `npm install --save-dev esbuild`
+- Instalar un empaquetador y un servidor de desarrollo.
 
-    Y, para él, dentro del apartado "scripts" del archivo package.json, añadir estas dos lineas:
+  - Por ejemplo: `npm install --save-dev esbuild`
 
-    ```
-    "start": "esbuild src/index.js --bundle --servedir=public/ --outdir=public/js --loader:.js=jsx --loader:.png=dataurl --loader:.jpg=dataurl",
-    "build": "esbuild src/index.js --bundle --minify --outdir=build --loader:.js=jsx --loader:.png=dataurl --loader:.jpg=dataurl",
-    ```
+      Y, para él, dentro del apartado "scripts" del archivo package.json, añadir estas dos lineas:
+
+      ```
+      "start": "esbuild src/index.js --bundle --servedir=public/ --outdir=public/js --loader:.js=jsx --loader:.png=dataurl --loader:.jpg=dataurl",
+      "build": "esbuild src/index.js --bundle --minify --outdir=build --loader:.js=jsx --loader:.png=dataurl --loader:.jpg=dataurl",
+      ```
+
+  - O por ejemplo: `npm install --save-dev parcel`
+
+      Y, para él, modificar el archivo package.json:
+
+      ```
+        "source": "src/index.html",
+        "scripts": {
+            "start": "parcel",
+            "build": "parcel build --dist-dir build",
+
+
+        },
+      ```
 
 - Instalar los dos módulos mínimos de React: `npm install react react-dom`
 
 - Crear manualmente una estructura básica de carpetas y archivos. Por ejemplo:
 
-![pantallazo estructura minima de app React](./imagenes/pantallazo%20estructura%20minima%20de%20app%20React.png)
+![pantallazo estructura minima de app React con esbuild](./imagenes/pantallazo%20estructura%20minima%20de%20app%20React%20con%20esbuild.png)
+
+![pantallazo estructura minima de app React con Parcel](./imagenes/pantallazo%20estructura%20minima%20de%20app%20React%20con%20parcel.png)
 
 El contenido mínimo habitual son los archivos básicos:
 
