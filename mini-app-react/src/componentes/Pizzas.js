@@ -84,11 +84,11 @@ export function Pizzas() {
     return (
         <>
             <h3>Pizzas:</h3>
-            <form class="enmarcado_dentro_de_una_caja">
+            <form className="enmarcado_dentro_de_una_caja">
                 <fieldset>
                     <legend>Elegir base:</legend>
                     <p>
-                        <label for="pastaFina">
+                        <label htmlFor="pastaFina">
                             <input
                                 type="radio"
                                 onChange={gestionarCambioPastaFina}
@@ -98,7 +98,7 @@ export function Pizzas() {
                         </label>
                     </p>
                     <p>
-                        <label for="pastaNormal">
+                        <label htmlFor="pastaNormal">
                             <input
                                 type="radio"
                                 onChange={gestionarCambioPastaNormal}
@@ -108,7 +108,7 @@ export function Pizzas() {
                         </label>
                     </p>
                     <p>
-                        <label for="conBordeQueso">
+                        <label htmlFor="conBordeQueso">
                             <input
                                 type="radio"
                                 onChange={gestionarCambioConBordeQueso}
@@ -126,7 +126,7 @@ export function Pizzas() {
                         puedes añadir:
                     </p>
                     <p>
-                        <label for="jamonYork">
+                        <label htmlFor="jamonYork">
                             <input
                                 type="checkbox"
                                 onChange={gestionarCambioJamonYork}
@@ -136,7 +136,7 @@ export function Pizzas() {
                         </label>
                     </p>
                     <p>
-                        <label for="bacon">
+                        <label htmlFor="bacon">
                             <input
                                 type="checkbox"
                                 onChange={gestionarCambioBacon}
@@ -146,7 +146,7 @@ export function Pizzas() {
                         </label>
                     </p>
                     <p>
-                        <label for="peperoni">
+                        <label htmlFor="peperoni">
                             <input
                                 type="checkbox"
                                 onChange={gestionarCambioPeperoni}
@@ -156,7 +156,7 @@ export function Pizzas() {
                         </label>
                     </p>
                     <p>
-                        <label for="champinon">
+                        <label htmlFor="champinon">
                             <input
                                 type="checkbox"
                                 onChange={gestionarCambioChampinon}
@@ -166,7 +166,7 @@ export function Pizzas() {
                         </label>
                     </p>
                     <p>
-                        <label for="aceituna">
+                        <label htmlFor="aceituna">
                             <input
                                 type="checkbox"
                                 onChange={gestionarCambioAceituna}
@@ -183,7 +183,7 @@ export function Pizzas() {
                 <p>
                     <textarea
                         value={respuesta}
-                        class="contenedor_de_una_respuesta"
+                        className="contenedor_de_una_respuesta"
                         readOnly
                     ></textarea>
                 </p>

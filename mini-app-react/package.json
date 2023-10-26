@@ -8,6 +8,7 @@
         "build": "parcel build --dist-dir build",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "proxy": "http://localhost:3001",
     "author": "",
     "license": "MIT",
     "dependencies": {

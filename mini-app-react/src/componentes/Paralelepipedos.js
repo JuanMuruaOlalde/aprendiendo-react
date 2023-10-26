@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export function Paralelepipedos() {
-    
     const [unLado, setUnLado] = useState("");
     const [errorEnUnLado, setErrorEnUnLado] = useState("");
     const [otroLado, setOtroLado] = useState("");
@@ -11,11 +10,18 @@ export function Paralelepipedos() {
     function CalcularParalelepipedo() {
         const perimetro = Number(unLado) * 2 + Number(otroLado) * 2;
         const area = Number(unLado) * Number(otroLado);
-        setRespuesta("Perimetro = " + perimetro.toString() + "\n" + "Area = " + area.toString());
+        setRespuesta(
+            "Perimetro = " +
+                perimetro.toString() +
+                "\n" +
+                "Area = " +
+                area.toString()
+        );
     }
 
     let comprobarSiEsNumero = new RegExp("^[0-9]+[.]?[0-9]*$");
-    const MENSAJE_ERROR_NOESNUMERO = "Se ha de teclear un número. (Y el separador decimal, si lo hay, ha de ser punto .)";
+    const MENSAJE_ERROR_NOESNUMERO =
+        "Se ha de teclear un número. (Y el separador decimal, si lo hay, ha de ser punto .)";
 
     function gestionarCambiosEnUnLado(evento) {
         setRespuesta("");
@@ -38,29 +44,48 @@ export function Paralelepipedos() {
 
     return (
         <>
-        <h3>Paralelepipedos:</h3>
-        <form class="enmarcado_dentro_de_una_caja" onSubmit={CalcularParalelepipedo}>
-            <p>
-                <label for="unLado">
-                    Un lado:
-                    <input type="text" value={unLado} onChange={gestionarCambiosEnUnLado} size="8" />
-                </label>
-                <div style={{color: "red"}}>{errorEnUnLado}</div>
-            </p>
-            <p>
-                <label for="otroLado">
-                    Otro lado:
-                    <input type="text" value={otroLado} onChange={gestionarCambiosEnOtroLado} size="8" />
-                </label>
-                <div style={{color: "red"}}>{errorEnOtroLado}</div>
-            </p>
-            <p>
-                <button type="button" onClick={CalcularParalelepipedo}>Calcular perímetro y área</button>
-            </p>
-            <p>
-                <textarea value={respuesta} class="contenedor_de_una_respuesta" readOnly></textarea>
-            </p>
-        </form>
+            <h3>Paralelepipedos:</h3>
+            <form
+                className="enmarcado_dentro_de_una_caja"
+                onSubmit={CalcularParalelepipedo}
+            >
+                <p>
+                    <label htmlFor="unLado">
+                        Un lado:
+                        <input
+                            type="text"
+                            value={unLado}
+                            onChange={gestionarCambiosEnUnLado}
+                            size="8"
+                        />
+                    </label>
+                    <p style={{ color: "red" }}>{errorEnUnLado}</p>
+                </p>
+                <p>
+                    <label htmlFor="otroLado">
+                        Otro lado:
+                        <input
+                            type="text"
+                            value={otroLado}
+                            onChange={gestionarCambiosEnOtroLado}
+                            size="8"
+                        />
+                    </label>
+                    <p style={{ color: "red" }}>{errorEnOtroLado}</p>
+                </p>
+                <p>
+                    <button type="button" onClick={CalcularParalelepipedo}>
+                        Calcular perímetro y área
+                    </button>
+                </p>
+                <p>
+                    <textarea
+                        value={respuesta}
+                        className="contenedor_de_una_respuesta"
+                        readOnly
+                    ></textarea>
+                </p>
+            </form>
         </>
-    )    
+    );
 }
