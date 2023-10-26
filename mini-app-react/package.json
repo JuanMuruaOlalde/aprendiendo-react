@@ -2,16 +2,20 @@
     "name": "mini-app-react",
     "version": "1.1.1",
     "description": "Primeros pasos para aprender React...",
-    "main": "index.js",
+    "source": "src/index.html",
     "scripts": {
-        "start": "esbuild src/index.js --bundle --servedir=public/ --outdir=public/js --loader:.js=jsx --loader:.png=dataurl --loader:.jpg=dataurl",
+        "start": "parcel",
+        "build": "parcel build --dist-dir build",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",
     "license": "MIT",
     "dependencies": {
-        "esbuild": "^0.19.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+        "parcel": "^2.10.1",
+        "process": "^0.11.10"
     }
 }

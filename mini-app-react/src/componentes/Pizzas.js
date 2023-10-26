@@ -1,14 +1,13 @@
 import { useState } from "react";
 
 export function Pizzas() {
-
     const [pastaFina, setPastaFina] = useState(false);
     const [pastaNormal, setPastaNormal] = useState(true);
     const [conBordeQueso, setConBordeQueso] = useState(false);
     const [jamonYork, setJamonYork] = useState(false);
     const [bacon, setBacon] = useState(false);
     const [peperoni, setPeperoni] = useState(false);
-    const [champiñon, setChampiñon] = useState(false);
+    const [champinon, setChampinon] = useState(false);
     const [aceituna, setAceituna] = useState(false);
     const [respuesta, setRespuesta] = useState("");
 
@@ -17,12 +16,14 @@ export function Pizzas() {
         componerRespuesta.push("Se va a enviar una pizza");
         if (pastaFina) {
             componerRespuesta.push(" de pasta fina.");
-                        }
+        }
         if (pastaNormal) {
             componerRespuesta.push(" de pasta normal.");
         }
         if (conBordeQueso) {
-            componerRespuesta.push(" de pasta normal con bordes rellenos de queso.");
+            componerRespuesta.push(
+                " de pasta normal con bordes rellenos de queso."
+            );
         }
         var ingredientes = [];
         if (jamonYork) {
@@ -34,7 +35,7 @@ export function Pizzas() {
         if (peperoni) {
             ingredientes.push("peperoni");
         }
-        if (champiñon) {
+        if (champinon) {
             ingredientes.push("champiñones");
         }
         if (aceituna) {
@@ -73,8 +74,8 @@ export function Pizzas() {
     function gestionarCambioPeperoni() {
         setPeperoni(!peperoni);
     }
-    function gestionarCambioChampiñon() {
-        setChampiñon(!champiñon);
+    function gestionarCambioChampinon() {
+        setChampinon(!champinon);
     }
     function gestionarCambioAceituna() {
         setAceituna(!aceituna);
@@ -82,69 +83,111 @@ export function Pizzas() {
 
     return (
         <>
-        <h3>Pizzas:</h3>
-        <form class="enmarcado_dentro_de_una_caja">
-            <fieldset>
-                <legend>Elegir base:</legend>
+            <h3>Pizzas:</h3>
+            <form class="enmarcado_dentro_de_una_caja">
+                <fieldset>
+                    <legend>Elegir base:</legend>
+                    <p>
+                        <label for="pastaFina">
+                            <input
+                                type="radio"
+                                onChange={gestionarCambioPastaFina}
+                                checked={pastaFina}
+                            />
+                            Pasta fina
+                        </label>
+                    </p>
+                    <p>
+                        <label for="pastaNormal">
+                            <input
+                                type="radio"
+                                onChange={gestionarCambioPastaNormal}
+                                checked={pastaNormal}
+                            />
+                            Pasta normal
+                        </label>
+                    </p>
+                    <p>
+                        <label for="conBordeQueso">
+                            <input
+                                type="radio"
+                                onChange={gestionarCambioConBordeQueso}
+                                checked={conBordeQueso}
+                            />
+                            Pasta normal con borde relleno de queso
+                        </label>
+                    </p>
+                </fieldset>
+                <br />
+                <fieldset>
+                    <legend>Ingredientes:</legend>
+                    <p>
+                        Todas llevan una capa base de tomate y queso. Además
+                        puedes añadir:
+                    </p>
+                    <p>
+                        <label for="jamonYork">
+                            <input
+                                type="checkbox"
+                                onChange={gestionarCambioJamonYork}
+                                checked={jamonYork}
+                            />
+                            Jamón York
+                        </label>
+                    </p>
+                    <p>
+                        <label for="bacon">
+                            <input
+                                type="checkbox"
+                                onChange={gestionarCambioBacon}
+                                checked={bacon}
+                            />
+                            Bacon crujiente
+                        </label>
+                    </p>
+                    <p>
+                        <label for="peperoni">
+                            <input
+                                type="checkbox"
+                                onChange={gestionarCambioPeperoni}
+                                checked={peperoni}
+                            />
+                            Peperoni
+                        </label>
+                    </p>
+                    <p>
+                        <label for="champinon">
+                            <input
+                                type="checkbox"
+                                onChange={gestionarCambioChampinon}
+                                checked={champinon}
+                            />
+                            Champiñones
+                        </label>
+                    </p>
+                    <p>
+                        <label for="aceituna">
+                            <input
+                                type="checkbox"
+                                onChange={gestionarCambioAceituna}
+                                checked={aceituna}
+                            />
+                            Aceitunas
+                        </label>
+                    </p>
+                </fieldset>
+                <br />
+                <button type="button" onClick={ProcesarPizza}>
+                    Procesar Pizza
+                </button>
                 <p>
-                    <label for="pastaFina">
-                        <input type="radio" onChange={gestionarCambioPastaFina} checked={pastaFina}/>
-                        Pasta fina
-                    </label>
+                    <textarea
+                        value={respuesta}
+                        class="contenedor_de_una_respuesta"
+                        readOnly
+                    ></textarea>
                 </p>
-                <p>
-                    <label for="pastaNormal">
-                        <input type="radio" onChange={gestionarCambioPastaNormal} checked={pastaNormal} />
-                        Pasta normal
-                    </label>
-                </p>
-                <p>
-                    <label for="conBordeQueso">
-                        <input type="radio" onChange={gestionarCambioConBordeQueso} checked={conBordeQueso} />
-                        Pasta normal con borde relleno de queso
-                    </label>
-                </p>
-            </fieldset>
-            <br />
-            <fieldset>
-                <legend>Ingredientes:</legend>
-                <p>Todas llevan una capa base de tomate y queso. Además puedes añadir:</p>
-                <p>
-                    <label for="jamonYork">
-                        <input type="checkbox" onChange={gestionarCambioJamonYork} checked={jamonYork} />
-                        Jamón York
-                    </label>
-                </p>
-                <p>
-                    <label for="bacon">
-                        <input type="checkbox" onChange={gestionarCambioBacon} checked={bacon} />
-                        Bacon crujiente
-                    </label>
-                </p>
-                <p>
-                    <label for="peperoni">
-                        <input type="checkbox" onChange={gestionarCambioPeperoni} checked={peperoni} />Peperoni</label>
-                </p>
-                <p>
-                    <label for="champiñon">
-                        <input type="checkbox" onChange={gestionarCambioChampiñon} checked={champiñon} />
-                        Champiñones
-                    </label>
-                </p>
-                <p>
-                    <label for="aceituna">
-                        <input type="checkbox" onChange={gestionarCambioAceituna} checked={aceituna} />
-                        Aceitunas
-                    </label>
-                </p>
-            </fieldset>
-            <br />
-            <button type="button" onClick={ProcesarPizza} >Procesar Pizza</button>
-            <p>
-                <textarea value={respuesta} class="contenedor_de_una_respuesta" readOnly></textarea>
-            </p>
-        </form>
+            </form>
         </>
-    )    
+    );
 }
-
