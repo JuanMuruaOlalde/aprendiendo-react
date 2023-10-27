@@ -1,12 +1,14 @@
-import { datosIniciales } from "./albaranesDeEjemplo.js";
+import { albaranesParaPruebas } from "./albaranesParaPruebas.js";
 
 export function getUltimosAlbaranes() {
     //como por ahora hay pocos, devuelvo todos los que hay
-    return datosIniciales;
+    return albaranesParaPruebas;
 }
 
 export function getAlbaran(numeroDeAlbaran) {
-    return datosIniciales.filter( (x) => x["numeroDeAlbaran"] == numeroDeAlbaran );
+    return albaranesParaPruebas.filter(
+        (x) => x["numeroDeAlbaran"] == numeroDeAlbaran
+    );
 }
 
 //TODO -pendiente- de incorporar las funciones guardarAlbaran(), añadirLineaAAlbaran() y eliminarAlbaran()

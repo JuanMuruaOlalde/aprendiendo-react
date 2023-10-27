@@ -1,12 +1,22 @@
 import config from "config";
-let WEATHERAPIKEY = config.get('weatherAPIkey');
+let WEATHERAPIKEY = config.get("weatherAPIkey");
+
+import { metereologiaParaPruebas } from "./metereologiaParaPruebas.js";
+
+export function getMetereologiaParaPruebas() {
+    return metereologiaParaPruebas;
+}
 
 export function getCoordenadas(poblacion, codigoPais) {
     return new Promise((resolve, reject) => {
         const urlParaGeocodificacion =
             "http://api.openweathermap.org/geo/1.0/direct" +
-            "?q=" + poblacion + "," + codigoPais +
-            "&appid=" + WEATHERAPIKEY;
+            "?q=" +
+            poblacion +
+            "," +
+            codigoPais +
+            "&appid=" +
+            WEATHERAPIKEY;
         fetch(urlParaGeocodificacion)
             .then((response) => {
                 if (!response.ok) {
@@ -25,12 +35,17 @@ export function getCoordenadas(poblacion, codigoPais) {
                 if (jsonData.length === 1) {
                     const latitud = jsonData[0]["lat"];
                     const longitud = jsonData[0]["lon"];
-                    resolve({latitud, longitud});
+                    resolve({ latitud, longitud });
                 } else {
                     resolve(jsonData);
                 }
             })
-            .catch((error) => reject("Se ha producido un error en la API de geolocalización:\n" + error.message));
+            .catch((error) =>
+                reject(
+                    "Se ha producido un error en la API de geolocalización:\n" +
+                        error.message
+                )
+            );
     });
 }
 
@@ -38,15 +53,24 @@ export function getMetereologia(latitud, longitud) {
     return new Promise((resolve, reject) => {
         const urlParaMetereologia =
             "https://api.openweathermap.org/data/2.5/weather" +
-            "?lat=" + latitud +
-            "&lon=" + longitud +
+            "?lat=" +
+            latitud +
+            "&lon=" +
+            longitud +
             "&units=metric" +
             "&lang=es" +
-            "&appid=" + WEATHERAPIKEY;
+            "&appid=" +
+            WEATHERAPIKEY;
+        console.log(urlParaMetereologia);
         fetch(urlParaMetereologia)
             .then((response) => {
                 if (!response.ok) {
-                    reject("No se ha podido obtener datos de la API metereologica:\n" + response.status + " " + response.statusText);
+                    reject(
+                        "No se ha podido obtener datos de la API metereologica:\n" +
+                            response.status +
+                            " " +
+                            response.statusText
+                    );
                 }
                 return response.json();
             })
@@ -57,8 +81,18 @@ export function getMetereologia(latitud, longitud) {
                 const humedadActual = jsonData["main"]["humidity"];
                 const vientoVelocidad = jsonData["wind"]["speed"];
                 const vientoDireccion = jsonData["wind"]["deg"];
-                resolve({temperaturaActual, humedadActual, vientoVelocidad, vientoDireccion});
+                resolve({
+                    temperaturaActual,
+                    humedadActual,
+                    vientoVelocidad,
+                    vientoDireccion,
+                });
             })
-            .catch((error) => reject("Se ha producido un error en la API metereologica:\n" + error.message));
+            .catch((error) =>
+                reject(
+                    "Se ha producido un error en la API metereologica:\n" +
+                        error.message
+                )
+            );
     });
 }
