@@ -4,7 +4,17 @@ let WEATHERAPIKEY = config.get("weatherAPIkey");
 import { metereologiaParaPruebas } from "./metereologiaParaPruebas.js";
 
 export function getMetereologiaParaPruebas() {
-    return metereologiaParaPruebas;
+    const jsonData = metereologiaParaPruebas;
+    const temperaturaActual = jsonData["main"]["temp"];
+    const humedadActual = jsonData["main"]["humidity"];
+    const vientoVelocidad = jsonData["wind"]["speed"];
+    const vientoDireccion = jsonData["wind"]["deg"];
+    return {
+        temperaturaActual,
+        humedadActual,
+        vientoVelocidad,
+        vientoDireccion,
+    };
 }
 
 export function getCoordenadas(poblacion, codigoPais) {
