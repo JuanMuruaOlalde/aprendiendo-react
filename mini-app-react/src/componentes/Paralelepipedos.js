@@ -49,7 +49,7 @@ export function Paralelepipedos() {
                 className="enmarcado_dentro_de_una_caja"
                 onSubmit={CalcularParalelepipedo}
             >
-                <p>
+                <div>
                     <label htmlFor="unLado">
                         Un lado:
                         <input
@@ -60,8 +60,8 @@ export function Paralelepipedos() {
                         />
                     </label>
                     <p style={{ color: "red" }}>{errorEnUnLado}</p>
-                </p>
-                <p>
+                </div>
+                <div>
                     <label htmlFor="otroLado">
                         Otro lado:
                         <input
@@ -72,7 +72,7 @@ export function Paralelepipedos() {
                         />
                     </label>
                     <p style={{ color: "red" }}>{errorEnOtroLado}</p>
-                </p>
+                </div>
                 <p>
                     <button type="button" onClick={CalcularParalelepipedo}>
                         Calcular perímetro y área
