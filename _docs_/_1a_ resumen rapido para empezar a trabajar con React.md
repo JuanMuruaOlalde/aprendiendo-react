@@ -2,7 +2,7 @@
 
 ## Para ponerse a trabajar en un ¡ya
 
-En estos momentos (2023) se tiende a usar React englobado dentro de frameworks más completos (para aplicaciones "full-stack" renderizadas en servidor), tales como Next, Remix, Gatsby, Expo,...
+En estos momentos (2023) se tiende a usar React englobado dentro de frameworks más completos (para aplicaciones "full-stack" renderizadas en servidor), tales como Next, Remix, Gatsby,...
 
 Pero hasta hace poco se utilizaba como punto de partida el proyecto CRA, la base propuesta por Meta (para "front-ends" renderizados en cliente, lo que realmente hace React): <https://create-react-app.dev/>
 
