@@ -1,12 +1,29 @@
 # Resumen rápido para empezar a trabajar con Node.js y React
 
-## Para ponerse a trabajar ¡ya!, enseguida
+## Para ponerse a trabajar en un ¡ya
 
-<https://react.dev/learn/start-a-new-react-project>
+En estos momentos (2023) se tiende a usar React englobado dentro de frameworks más completos (para aplicaciones "full-stack" renderizadas en servidor), tales como Next, Remix, Gatsby,...
+
+Pero hasta hace poco se utilizaba como punto de partida el proyecto CRA, la base propuesta por Meta (para "front-ends" renderizados en cliente, lo que realmente hace React): <https://create-react-app.dev/>
+
+Para una explicación detallada del porqué de ese cambio. Desplegar y leer el apartado "Can I use React without a framework?", al final de la página <https://react.dev/learn/start-a-new-react-project>
+
+### CRA (create-react-app)
+
+Para comenzar un proyecto con CRA:
+
+- Descargar e instalar Node.js (<https://nodejs.org/es/download>)
+
+- Situarse en la carpeta donde se vaya a crear la carpeta del proyecto  
+     y ejecutar el comando `npx create-react-app nombrecarpetaproyecto`
+
+Esto genera una serie de archivos básicos para una aplicación React. Además de preparar y preconfigurar toda una serie de herramientas de desarrollo: Webpack, Eslint, Babel, Jest,...
+
+![pantallazo estructura inicial de create-react-app](./imagenes/pantallazo%20estructura%20inicial%20de%20create-react-app.png)
 
 ### Next.js
 
-Por ejemplo, para empezar con el marco de trabajo Next, solo hay que seguir dos pasos:
+Para comenzar un proyecto con Next:
 
 - Descargar e instalar Node.js (<https://nodejs.org/es/download>)
 
@@ -51,7 +68,7 @@ Se generan una serie de archivos básicos para una aplicación React. Además de
 
 ### Remix.js
 
-Por ejemplo, para empezar con el marco de trabajo Remix, solo hay que seguir estos pasos:
+Para comenzar un proyecto con Remix:
 
 - Descargar e instalar Node.js (<https://nodejs.org/es/download>)
 
@@ -66,26 +83,11 @@ Esto prepara toda una serie de herramientas de desarrollo: esbuild, Babel, Prett
 
 <https://remix.run/docs/en/main>
 
-### CRA (create-react-app) esta deprecated
-
-En estos momentos se tiende a usar frameworks como los citados anteriormente. Pero hasta hace poco se utilizaba como punto de partida la base propuesta por Meta, el proyecto CRA: <https://create-react-app.dev/>
-
-Para una explicación detallada de la evolución, leer el apartado "Can I use React without a framework?", al final de la página <https://react.dev/learn/start-a-new-react-project>
-
-Si aún tienes interés en comenzar un proyecto con CRA:
-
-- Descargar e instalar Node.js (<https://nodejs.org/es/download>)
-
-- Situarse en la carpeta donde se vaya a crear la carpeta del proyecto  
-     y ejecutar el comando `npx create-react-app nombrecarpetaproyecto`
-
-Esto genera una serie de archivos básicos para una aplicación React. Además de preparar y preconfigurar toda una serie de herramientas de desarrollo: Webpack, Eslint, Babel, Jest,...
-
-![pantallazo estructura inicial de create-react-app](./imagenes/pantallazo%20estructura%20inicial%20de%20create-react-app.png)
-
 ## Para entender un poco mejor lo que se está haciendo
 
-Preparar una infraestructura mínima manualmente:
+Para comprender las bases de React, merece la pena preparar manualmente una infraestructura mínima. Aprendiendo el papel que juega cada parte dentro de un proyecto.
+
+Pasos básicos:
 
 - Descargar e instalar Node.js (<https://nodejs.org/es/download>)
 
@@ -315,36 +317,30 @@ Por ejemplo, la biblioteca Redux (<https://redux.js.org/>) se inspira en ese pat
 
 ![Redux data flow](https://d33wubrfki0l68.cloudfront.net/01cc198232551a7e180f4e9e327b5ab22d9d14e7/b33f4/assets/images/reduxdataflowdiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
 
-## Alternativas a create-react-app
-
-Además del marco de trabajo canónico preconizado por el propio Meta (<https://create-react-app.dev/docs/getting-started>). Existen también otros marcos desarrollados por la comunidad.
-
-Por ejemplo:
-
-- Next (<https://nextjs.org/docs>)
-
-- Gatsby (<https://www.gatsbyjs.com/docs/>)
-
-- Remix (<https://remix.run/docs/en/main/discussion/introduction>)
-
-- etc.
-
 ## Un poco de nomenclatura, estructura de carpetas
 
-Cada cual se organiza la aplicación web como le apetece. Y además React es "no-opinionated", es decir, deja a cada cual trabajar como le apetezca.
+Cada cual se organiza la aplicación web como le apetece. Y además React es "no-opinionated", es decir, no dicta una forma de trabajar concreta; sino que deja a cada cual trabajar como quiera.
 
-Pero una serie de carpetas suelen aparecer con bastante frecuencia:
+Pero una serie de carpetas suelen aparecer con bastante frecuencia en los proyectos:
 
-- _public_ (o también suele ser _www_), para el contenido web estático.
+- _public_ (o también suele ser _static_ o _www_), para el contenido web estático.
 
-    Si hay mucho contenido, se suelen contemplar algunas subcarpetas. Como por ejemplo:
+    Cuando hay mucho contenido, se suelen contemplar algunas subcarpetas. Como por ejemplo:
 
   - _css_ (o también suele ser _styles_), para contenido CSS.
-  - _js_ (o también suele ser _javascript_), para contenido Javascript.
-  - _img_ (o también suele ser _images_ o _assets_), para imagenes, iconos, fuentes,...
-  - _data_
+  - _js_, para contenido Javascript.
+  - _img_ (o también suele ser _images_ o _assets_), para contenido multimedia (imagenes, iconos, fuentes,...)
+  - _data_, para datos estáticos.
   - _pages_, para contenido HTML.
+  - y algunas otras...
 
 - _src_, para el código fuente que genera el contenido web dinámico.
 
-    Salvo en aplicaciones muy pequeñas, debajo de _src_ también suele ser necesario algún tipo de estructura de subcarpetas. Por ejemplo, en apps React es típico que haya una subcarpeta _components_ y algunas otras...
+    Salvo en aplicaciones muy pequeñas. Debajo de _src_ también suele ser necesario algún tipo de estructura de subcarpetas. Por ejemplo, en apps React es típico que haya subcarpetas tales como:
+  - _components_, para código de pequeños componentes individuales.
+  - _assets_, para contenido multimedia (imagenes, iconos, fuentes,...)
+  - _views_, para código de grandes componentes (normalmente compuestos por otros componentes más pequenos)
+  - _services_, para código que conecta con BDs, APIs externas, etc.
+  - _utils_, para código de funciones transversales, utilizadas en varias partes.
+  - _store_, para el almacenamiento centralizado del estado (si se usa Redux o similares).
+  - y algunas otras...
